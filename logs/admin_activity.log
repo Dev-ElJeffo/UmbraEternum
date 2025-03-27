@@ -1,0 +1,47 @@
+[2025-03-26 16:18:37] admin (::1): Acesso negado - Tentativa de acesso não autorizado às ferramentas administrativas
+[2025-03-26 16:19:07] admin (::1): Acesso negado - Tentativa de acesso não autorizado às ferramentas administrativas
+[2025-03-26 16:43:41] admin (::1): Promoção de usuário - Usuário ID: 4 promovido a administrador
+[2025-03-26 16:45:33] admin (::1): Falha na promoção - Falha ao promover usuário ID: 4. Código: 400
+[2025-03-26 16:48:50] jeffo (::1): Visualizou arquivo de log - logs/activity_2025-03-26.log
+[2025-03-26 16:54:59] jeffo (::1): Visualizou arquivo de log - logs/activity_2025-03-26.log
+[2025-03-26 16:58:29] jeffo (::1): Falha na exclusão - Falha ao excluir personagem ID: 1. Código: 404
+[2025-03-26 16:58:29] jeffo (::1): Visualizou arquivo de log - logs/activity_2025-03-26.log
+[2025-03-26 16:58:42] jeffo (::1): Banimento de usuário - Usuário ID: 2 banido com sucesso
+[2025-03-26 16:58:42] jeffo (::1): Visualizou arquivo de log - logs/activity_2025-03-26.log
+[2025-03-26 16:58:48] jeffo (::1): Visualizou arquivo de log - logs/activity_2025-03-26.log
+[2025-03-26 17:00:08] jeffo (::1): Visualizou arquivo de log - logs/activity_2025-03-26.log
+[2025-03-26 17:00:46] jeffo (::1): Visualizou arquivo de log - logs/activity_2025-03-26.log
+[2025-03-26 17:00:53] jeffo (::1): Visualizou arquivo de log - logs/activity_2025-03-26.log
+[2025-03-26 17:09:59] jeffo (::1): Visualizou arquivo de log - logs/activity_2025-03-26.log
+[2025-03-26 17:14:45] admin (::1): Visualizou arquivo de log - logs/activity_2025-03-26.log
+[2025-03-26 17:18:57] admin (::1): Visualizou arquivo de log - logs/activity_2025-03-26.log
+[2025-03-26 17:25:12] jeffo (::1): Visualizou arquivo de log - logs/activity_2025-03-26.log
+[2025-03-26 17:32:26] jeffo (::1): Visualizou arquivo de log - logs/activity_2025-03-26.log
+[2025-03-26 17:32:31] jeffo (::1): Visualizou arquivo de log - logs/activity_2025-03-26.log
+[2025-03-26 17:47:58] jeffo (::1): Visualizou arquivo de log - logs/activity_2025-03-26.log
+[2025-03-26 17:49:17] jeffo (::1): Visualizou arquivo de log - logs/activity_2025-03-26.log
+[2025-03-26 17:54:03] admin (::1): Visualizou arquivo de log - logs/activity_2025-03-26.log
+[2025-03-26 17:56:07] admin (::1): Visualizou arquivo de log - logs/activity_2025-03-26.log
+[2025-03-26 18:00:34] jeffo (::1): Visualizou arquivo de log - logs/activity_2025-03-26.log
+[2025-03-26 18:06:49] jeffo (::1): Visualizou arquivo de log - logs/activity_2025-03-26.log
+[2025-03-26 18:46:22] jeffo (::1): Visualizou arquivo de log - logs/activity_2025-03-26.log
+[2025-03-26 19:24:39] jeffo (::1): Visualizou arquivo de log - logs/activity_2025-03-26.log
+[2025-03-27 08:04:57] jeffo (::1): Visualizou arquivo de log - logs/activity_2025-03-27.log
+[2025-03-27 08:05:09] admin (::1): Visualizou arquivo de log - logs/activity_2025-03-27.log
+[2025-03-27 08:19:24] jeffo (::1): Visualizou arquivo de log - logs/activity_2025-03-27.log
+[2025-03-27 08:20:16] admin (::1): Visualizou arquivo de log - logs/activity_2025-03-27.log
+[2025-03-27 08:28:16] admin (::1): Visualizou arquivo de log - logs/activity_2025-03-27.log
+[2025-03-27 08:48:23] jeffo (::1): Visualizou arquivo de log - logs/activity_2025-03-27.log
+[2025-03-27 08:49:35] admin (::1): Visualizou arquivo de log - logs/activity_2025-03-27.log
+[2025-03-27 08:50:03] admin (::1): Visualizou arquivo de log - logs/activity_2025-03-27.log
+[2025-03-27 08:50:07] admin (::1): Visualizou arquivo de log - logs/activity_2025-03-27.log
+[2025-03-27 08:50:38] admin (::1): Visualizou arquivo de log - logs/activity_2025-03-27.log
+[2025-03-27 08:50:48] admin (::1): Banimento de usuário - Usuário ID: 5 banido com sucesso
+[2025-03-27 08:50:48] admin (::1): Visualizou arquivo de log - logs/activity_2025-03-27.log
+[2025-03-27 08:51:03] admin (::1): Desbanimento de usuário - Usuário ID: 5 desbanido com sucesso
+[2025-03-27 08:51:03] admin (::1): Visualizou arquivo de log - logs/activity_2025-03-27.log
+[2025-03-27 08:57:44] jeffo (::1): Visualizou arquivo de log - logs/activity_2025-03-27.log
+[2025-03-27 09:06:52] jeffo (::1): Visualizou arquivo de log - logs/activity_2025-03-27.log
+[2025-03-27 10:37:05] admin (::1): Visualizou arquivo de log - logs/activity_2025-03-27.log
+[2025-03-27 12:39:33] jeffo (::1): Visualizou arquivo de log - logs/activity_2025-03-27.log
+[2025-03-27 15:22:59] jeffo (::1): Visualizou arquivo de log - logs/activity_2025-03-27.log

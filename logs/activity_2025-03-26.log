@@ -1,0 +1,248 @@
+[2025-03-26T16:54:28.519Z] Servidor iniciado
+[2025-03-26T17:04:43.913Z] Erro na conexão com o banco de dados: Access denied for user 'root'@'localhost' (using password: NO)
+[2025-03-26T17:04:43.920Z] Servidor iniciado
+[2025-03-26T17:05:52.000Z] Erro na conexão com o banco de dados: Access denied for user 'root'@'localhost' (using password: NO)
+[2025-03-26T17:05:52.008Z] Erro crítico: listen EADDRINUSE: address already in use :::34567
+[2025-03-26T17:06:00.581Z] Erro na conexão com o banco de dados: Access denied for user 'root'@'localhost' (using password: NO)
+[2025-03-26T17:06:00.588Z] Servidor iniciado
+[2025-03-26T17:13:42.885Z] Conexão com o banco de dados estabelecida
+[2025-03-26T17:13:42.892Z] Servidor iniciado
+[2025-03-26T17:16:16.562Z] Conexão com o banco de dados estabelecida
+[2025-03-26T17:16:16.569Z] Servidor iniciado
+[2025-03-26T17:30:54.391Z] Conexão com o banco de dados estabelecida
+[2025-03-26T17:30:54.397Z] Servidor iniciado
+[2025-03-26T17:39:14.174Z] Conexão com o banco de dados estabelecida
+[2025-03-26T17:39:14.181Z] Servidor iniciado
+[2025-03-26T18:41:57.942Z] Conexão com o banco de dados estabelecida
+[2025-03-26T18:41:57.951Z] Servidor iniciado
+[2025-03-26T18:45:46.625Z] Conexão com o banco de dados estabelecida
+[2025-03-26T18:45:46.631Z] Erro crítico: listen EADDRINUSE: address already in use :::34567
+[2025-03-26T18:46:42.829Z] Conexão com o banco de dados estabelecida
+[2025-03-26T18:46:42.841Z] Erro crítico: listen EADDRINUSE: address already in use :::34567
+[2025-03-26T18:49:40.961Z] Conexão com o banco de dados estabelecida
+[2025-03-26T18:49:40.973Z] Erro crítico: listen EADDRINUSE: address already in use :::34567
+[2025-03-26T18:51:23.603Z] Conexão com o banco de dados estabelecida
+[2025-03-26T18:51:23.614Z] Servidor iniciado
+[2025-03-26T18:51:32.361Z] Novo usuário registrado: user_1743015092205
+[2025-03-26T18:52:15.787Z] Conexão com o banco de dados estabelecida
+[2025-03-26T18:52:15.896Z] Servidor iniciado
+[2025-03-26T18:52:18.661Z] Novo usuário registrado: user_1743015138506
+[2025-03-26T18:52:18.747Z] Usuário user_1743015138506 fez login
+[2025-03-26T18:52:45.617Z] Novo usuário registrado: admin
+[2025-03-26T18:53:07.687Z] Usuário admin fez login
+[2025-03-26T18:54:20.731Z] Usuário admin fez login
+[2025-03-26T18:57:18.012Z] Conexão com o banco de dados estabelecida
+[2025-03-26T18:57:18.024Z] Servidor iniciado
+[2025-03-26T18:57:21.011Z] Usuário admin fez login
+[2025-03-26T18:57:59.775Z] Usuário admin fez login
+[2025-03-26T19:01:37.065Z] Usuário admin fez login
+[2025-03-26T19:01:37.866Z] Usuário admin fez login
+[2025-03-26T19:02:05.617Z] Usuário admin saiu do jogo
+[2025-03-26T19:02:23.264Z] Novo usuário registrado: jeffo
+[2025-03-26T19:02:32.106Z] Usuário jeffo fez login
+[2025-03-26T19:02:32.826Z] Usuário jeffo fez login
+[2025-03-26T19:03:26.926Z] Usuário jeffo saiu do jogo
+[2025-03-26T19:03:42.715Z] Usuário admin fez login
+[2025-03-26T19:04:24.268Z] Usuário admin fez login
+[2025-03-26T19:05:09.475Z] Usuário admin fez login
+[2025-03-26T19:07:01.071Z] Novo usuário registrado: admin
+[2025-03-26T19:07:01.151Z] Novo usuário registrado: test_user_1743016021
+[2025-03-26T19:07:01.230Z] Usuário admin fez login
+[2025-03-26T19:07:01.320Z] Usuário test_user_1743016021 fez login
+[2025-03-26T19:08:53.814Z] Usuário jeffo fez login
+[2025-03-26T19:08:59.507Z] Usuário jeffo saiu do jogo
+[2025-03-26T19:09:09.335Z] Usuário admin fez login
+[2025-03-26T19:09:10.102Z] Usuário admin fez login
+[2025-03-26T19:16:20.070Z] Usuário admin saiu do jogo
+[2025-03-26T19:16:24.077Z] Usuário admin fez login
+[2025-03-26T19:16:24.965Z] Usuário admin saiu do jogo
+[2025-03-26T19:18:25.373Z] Usuário admin fez login
+[2025-03-26T19:18:37.698Z] Usuário admin saiu do jogo
+[2025-03-26T19:18:38.360Z] Usuário admin fez login
+[2025-03-26T19:18:43.911Z] Usuário admin saiu do jogo
+[2025-03-26T19:18:55.554Z] Usuário admin fez login
+[2025-03-26T19:18:56.242Z] Usuário admin fez login
+[2025-03-26T19:19:07.666Z] Usuário admin saiu do jogo
+[2025-03-26T19:19:08.300Z] Usuário admin fez login
+[2025-03-26T19:24:54.763Z] Usuário admin saiu do jogo
+[2025-03-26T19:24:55.441Z] Usuário admin fez login
+[2025-03-26T19:25:04.042Z] Usuário admin saiu do jogo
+[2025-03-26T19:25:10.337Z] Usuário admin fez login
+[2025-03-26T19:25:10.566Z] Usuário admin fez login
+[2025-03-26T19:25:30.443Z] Usuário admin saiu do jogo
+[2025-03-26T19:25:30.677Z] Usuário admin fez login
+[2025-03-26T19:25:32.723Z] Usuário admin saiu do jogo
+[2025-03-26T19:25:32.940Z] Usuário admin fez login
+[2025-03-26T19:25:33.531Z] Usuário admin saiu do jogo
+[2025-03-26T19:25:33.745Z] Usuário admin fez login
+[2025-03-26T19:25:35.130Z] Usuário admin saiu do jogo
+[2025-03-26T19:25:44.118Z] Usuário admin fez login
+[2025-03-26T19:25:47.017Z] Usuário admin saiu do jogo
+[2025-03-26T19:25:53.313Z] Usuário admin fez login
+[2025-03-26T19:25:53.570Z] Usuário admin fez login
+[2025-03-26T19:26:30.184Z] Usuário admin saiu do jogo
+[2025-03-26T19:26:39.619Z] Usuário admin fez login
+[2025-03-26T19:26:43.560Z] Usuário admin saiu do jogo
+[2025-03-26T19:26:45.499Z] Usuário admin fez login
+[2025-03-26T19:26:47.999Z] Usuário admin saiu do jogo
+[2025-03-26T19:26:57.214Z] Usuário admin fez login
+[2025-03-26T19:26:57.532Z] Usuário admin fez login
+[2025-03-26T19:27:30.086Z] Usuário admin saiu do jogo
+[2025-03-26T19:27:47.305Z] Usuário admin fez login
+[2025-03-26T19:27:53.733Z] Usuário admin saiu do jogo
+[2025-03-26T19:30:07.906Z] Conexão com o banco de dados estabelecida
+[2025-03-26T19:30:07.918Z] Erro crítico: listen EADDRINUSE: address already in use :::34567
+[2025-03-26T19:32:36.967Z] Conexão com o banco de dados estabelecida
+[2025-03-26T19:32:36.979Z] Servidor iniciado
+[2025-03-26T19:32:46.908Z] Usuário admin fez login
+[2025-03-26T19:32:53.814Z] Usuário admin saiu do jogo
+[2025-03-26T19:32:54.556Z] Usuário admin fez login
+[2025-03-26T19:32:58.363Z] Usuário admin saiu do jogo
+[2025-03-26T19:33:06.086Z] Usuário admin fez login
+[2025-03-26T19:33:14.236Z] Conexão com o banco de dados estabelecida
+[2025-03-26T19:33:14.250Z] Servidor iniciado
+[2025-03-26T19:33:14.471Z] Usuário admin fez login
+[2025-03-26T19:33:47.702Z] Usuário admin saiu do jogo
+[2025-03-26T19:33:48.240Z] Usuário admin fez login
+[2025-03-26T19:33:55.753Z] Usuário admin saiu do jogo
+[2025-03-26T19:36:22.613Z] Conexão com o banco de dados estabelecida
+[2025-03-26T19:36:22.625Z] Servidor iniciado
+[2025-03-26T19:36:43.650Z] Novo usuário registrado: user_1743017803555
+[2025-03-26T19:36:43.734Z] Usuário admin fez login
+[2025-03-26T19:36:43.812Z] Usuário user_1743017803555 fez login
+[2025-03-26T19:40:50.134Z] Usuário admin fez login
+[2025-03-26T19:40:50.817Z] Usuário admin fez login
+[2025-03-26T19:40:59.148Z] Usuário admin saiu do jogo
+[2025-03-26T19:42:48.518Z] Usuário admin fez login
+[2025-03-26T19:42:54.287Z] Usuário admin saiu do jogo
+[2025-03-26T19:43:11.764Z] Novo usuário registrado: jeffo
+[2025-03-26T19:43:19.844Z] Usuário jeffo fez login
+[2025-03-26T19:43:20.510Z] Usuário jeffo fez login
+[2025-03-26T19:43:26.342Z] Usuário jeffo saiu do jogo
+[2025-03-26T19:43:33.245Z] Usuário admin fez login
+[2025-03-26T19:43:33.905Z] Usuário admin fez login
+[2025-03-26T19:43:37.255Z] Usuário admin saiu do jogo
+[2025-03-26T19:43:41.824Z] Administrador admin promoveu o usuário jeffo a administrador
+[2025-03-26T19:45:44.777Z] Usuário jeffo fez login
+[2025-03-26T19:45:45.068Z] Usuário jeffo fez login
+[2025-03-26T19:45:47.657Z] Usuário jeffo saiu do jogo
+[2025-03-26T19:46:58.676Z] Novo usuário registrado: jogador_teste22
+[2025-03-26T19:49:21.374Z] Usuário jeffo fez login
+[2025-03-26T19:49:21.675Z] Usuário jeffo fez login
+[2025-03-26T19:49:33.465Z] Usuário jeffo saiu do jogo
+[2025-03-26T19:54:52.847Z] Usuário jeffo fez login
+[2025-03-26T19:54:57.270Z] Usuário jeffo saiu do jogo
+[2025-03-26T19:58:42.483Z] Administrador jeffo baniu o usuário test_user_1743016021
+[2025-03-26T19:59:55.434Z] Conexão com o banco de dados estabelecida
+[2025-03-26T19:59:55.446Z] Erro crítico: listen EADDRINUSE: address already in use :::34567
+[2025-03-26T20:00:01.999Z] Usuário jeffo fez login
+[2025-03-26T20:00:02.265Z] Usuário jeffo fez login
+[2025-03-26T20:00:08.332Z] Usuário jeffo saiu do jogo
+[2025-03-26T20:01:00.595Z] Usuário jeffo fez login
+[2025-03-26T20:01:39.289Z] Usuário jeffo saiu do jogo
+[2025-03-26T20:01:45.484Z] Usuário jeffo fez login
+[2025-03-26T20:01:45.745Z] Usuário jeffo fez login
+[2025-03-26T20:02:22.026Z] Conexão com o banco de dados estabelecida
+[2025-03-26T20:02:22.038Z] Servidor iniciado
+[2025-03-26T20:02:24.673Z] Usuário jeffo fez login
+[2025-03-26T20:02:42.787Z] Usuário jeffo saiu do jogo
+[2025-03-26T20:02:43.023Z] Usuário jeffo fez login
+[2025-03-26T20:02:45.871Z] Usuário jeffo saiu do jogo
+[2025-03-26T20:02:50.190Z] Usuário jeffo fez login
+[2025-03-26T20:03:16.758Z] Usuário jeffo saiu do jogo
+[2025-03-26T20:04:30.353Z] Usuário jeffo fez login
+[2025-03-26T20:04:43.443Z] Usuário jeffo saiu do jogo
+[2025-03-26T20:06:01.955Z] Usuário jeffo fez login
+[2025-03-26T20:06:02.292Z] Usuário jeffo fez login
+[2025-03-26T20:06:55.121Z] Conexão com o banco de dados estabelecida
+[2025-03-26T20:06:55.133Z] Servidor iniciado
+[2025-03-26T20:06:55.185Z] Usuário jeffo fez login
+[2025-03-26T20:07:21.952Z] Usuário jeffo saiu do jogo
+[2025-03-26T20:07:43.031Z] Usuário jeffo fez login
+[2025-03-26T20:11:17.768Z] Usuário admin fez login
+[2025-03-26T20:12:58.211Z] Conexão com o banco de dados estabelecida
+[2025-03-26T20:12:58.223Z] Servidor iniciado
+[2025-03-26T20:14:11.096Z] Usuário admin fez login
+[2025-03-26T20:14:19.000Z] Usuário admin saiu do jogo
+[2025-03-26T20:14:39.659Z] Usuário admin fez login
+[2025-03-26T20:14:45.150Z] Usuário admin saiu do jogo
+[2025-03-26T20:17:00.793Z] Usuário admin fez login
+[2025-03-26T20:18:56.790Z] Usuário admin saiu do jogo
+[2025-03-26T20:22:46.517Z] Usuário jeffo fez login
+[2025-03-26T20:22:46.829Z] Usuário jeffo fez login
+[2025-03-26T20:23:07.725Z] Usuário jeffo saiu do jogo
+[2025-03-26T20:23:57.963Z] Conexão com o banco de dados estabelecida
+[2025-03-26T20:23:57.980Z] Erro crítico: listen EADDRINUSE: address already in use :::34567
+[2025-03-26T20:25:05.061Z] Usuário jeffo fez login
+[2025-03-26T20:25:05.450Z] Usuário jeffo fez login
+[2025-03-26T20:25:11.840Z] Usuário jeffo saiu do jogo
+[2025-03-26T20:28:00.272Z] Conexão com o banco de dados estabelecida
+[2025-03-26T20:28:00.285Z] Servidor iniciado
+[2025-03-26T20:32:00.609Z] Usuário jeffo fez login
+[2025-03-26T20:32:06.843Z] Usuário jeffo saiu do jogo
+[2025-03-26T20:32:16.634Z] Usuário jeffo fez login
+[2025-03-26T20:32:17.136Z] Usuário jeffo fez login
+[2025-03-26T20:32:26.353Z] Usuário jeffo saiu do jogo
+[2025-03-26T20:36:25.012Z] Usuário jeffo fez login
+[2025-03-26T20:36:31.217Z] Usuário jeffo saiu do jogo
+[2025-03-26T20:45:46.929Z] Conexão com o banco de dados estabelecida
+[2025-03-26T20:45:46.941Z] Servidor iniciado
+[2025-03-26T20:46:28.083Z] Novo usuário registrado: jogador_teste222
+[2025-03-26T20:46:29.278Z] Novo usuário registrado: teste_log
+[2025-03-26T20:46:37.202Z] Usuário teste_log fez login
+[2025-03-26T20:47:17.271Z] Usuário jeffo fez login
+[2025-03-26T20:50:00.657Z] Usuário admin fez login
+[2025-03-26T20:59:40.687Z] Conexão com o banco de dados estabelecida
+[2025-03-26T20:59:40.698Z] Servidor iniciado
+[2025-03-26T20:59:44.989Z] Novo usuário registrado: user_1743022784896
+[2025-03-26T20:59:45.074Z] Usuário admin fez login
+[2025-03-26T20:59:45.154Z] Usuário user_1743022784896 fez login
+[2025-03-26T21:00:28.996Z] Usuário jeffo fez login
+[2025-03-26T21:05:55.869Z] Conexão com o banco de dados estabelecida
+[2025-03-26T21:05:55.883Z] Servidor iniciado
+[2025-03-26T21:06:00.399Z] Novo usuário registrado: user_1743023160299
+[2025-03-26T21:06:00.491Z] Usuário admin fez login
+[2025-03-26T21:06:00.575Z] Usuário user_1743023160299 fez login
+[2025-03-26T21:13:43.654Z] Conexão com o banco de dados estabelecida
+[2025-03-26T21:13:43.665Z] Servidor iniciado
+[2025-03-26T21:15:28.058Z] Usuário admin fez login
+[2025-03-26T21:35:13.258Z] Conexão com o banco de dados estabelecida
+[2025-03-26T21:35:13.270Z] Servidor iniciado
+[2025-03-26T21:35:17.508Z] Novo usuário registrado: user_1743024917415
+[2025-03-26T21:35:17.592Z] Usuário admin fez login
+[2025-03-26T21:35:17.673Z] Usuário user_1743024917415 fez login
+[2025-03-26T21:35:38.101Z] Novo usuário registrado: testuser123
+[2025-03-26T21:35:44.681Z] Usuário testuser123 fez login
+[2025-03-26T21:36:14.051Z] Novo usuário registrado: user_1743024973977
+[2025-03-26T21:36:14.134Z] Usuário admin fez login
+[2025-03-26T21:36:14.213Z] Usuário user_1743024973977 fez login
+[2025-03-26T21:36:22.762Z] Usuário admin fez login
+[2025-03-26T21:36:30.493Z] Usuário admin fez login
+[2025-03-26T21:40:41.790Z] Conexão com o banco de dados estabelecida
+[2025-03-26T21:40:41.801Z] Servidor iniciado
+[2025-03-26T21:41:35.300Z] Novo usuário registrado: websocket_tester
+[2025-03-26T21:42:18.118Z] Novo usuário registrado: api_tester_1743025337989
+[2025-03-26T21:42:18.204Z] Usuário api_tester_1743025337989 fez login
+[2025-03-26T21:42:33.646Z] Conexão com o banco de dados estabelecida
+[2025-03-26T21:42:33.660Z] Servidor iniciado
+[2025-03-26T21:43:43.819Z] Conexão com o banco de dados estabelecida
+[2025-03-26T21:43:43.830Z] Servidor iniciado
+[2025-03-26T21:43:48.118Z] Novo usuário registrado: api_tester_1743025427980
+[2025-03-26T21:43:48.209Z] Usuário api_tester_1743025427980 fez login
+[2025-03-26T21:43:54.812Z] Usuário websocket_tester fez login
+[2025-03-26T21:46:14.531Z] Usuário jeffo fez login
+[2025-03-26T21:46:22.563Z] Usuário jeffo saiu do jogo
+[2025-03-26T21:50:45.198Z] Conexão com o banco de dados estabelecida
+[2025-03-26T21:50:45.212Z] Erro crítico: listen EADDRINUSE: address already in use :::34567
+[2025-03-26T21:52:18.864Z] Conexão com o banco de dados estabelecida
+[2025-03-26T21:52:18.877Z] Erro crítico: listen EADDRINUSE: address already in use :::34567
+[2025-03-26T22:24:32.711Z] Usuário jeffo fez login
+[2025-03-26T22:24:33.052Z] Usuário jeffo fez login
+[2025-03-26T22:24:38.995Z] Usuário jeffo saiu do jogo
+[2025-03-26T22:24:45.410Z] Usuário jeffo fez login
+[2025-03-26T22:27:23.239Z] Conexão com o banco de dados estabelecida
+[2025-03-26T22:27:23.251Z] Servidor iniciado
+[2025-03-26T23:14:37.022Z] Usuário jeffo saiu do jogo
+[2025-03-26T23:14:44.547Z] Usuário jeffo fez login
+[2025-03-26T23:19:03.515Z] Usuário jeffo saiu do jogo
+[2025-03-26T23:21:01.349Z] Usuário admin fez login
