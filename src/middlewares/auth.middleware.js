@@ -14,47 +14,47 @@ const authenticate = async (req, res, next) => {
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
       return res.status(401).json({
         success: false,
-        message: 'Token de autenticação não fornecido'
+        message: 'Token de autenticação não fornecido',
       });
     }
-    
+
     // Extrair token do cabeçalho
     const token = authHeader.split(' ')[1];
-    
+
     // Verificar o token
     try {
       const decoded = jwt.verify(token, jwtConfig.secret);
-      
+
       // Verificar se o usuário existe e está ativo
       const user = await User.findById(decoded.userId);
       if (!user || !user.active) {
         return res.status(401).json({
           success: false,
-          message: 'Usuário não encontrado ou desativado'
+          message: 'Usuário não encontrado ou desativado',
         });
       }
-      
+
       // Guardar dados do usuário no objeto de requisição
       req.userId = decoded.userId;
       req.username = decoded.username;
       req.userRole = decoded.role;
-      
+
       next();
     } catch (error) {
       if (error.name === 'TokenExpiredError') {
         return res.status(401).json({
           success: false,
-          message: 'Token expirado'
+          message: 'Token expirado',
         });
       }
-      
+
       if (error.name === 'JsonWebTokenError') {
         return res.status(401).json({
           success: false,
-          message: 'Token inválido'
+          message: 'Token inválido',
         });
       }
-      
+
       throw error;
     }
   } catch (error) {
@@ -62,7 +62,7 @@ const authenticate = async (req, res, next) => {
     return res.status(500).json({
       success: false,
       message: 'Erro na autenticação',
-      error: error.message
+      error: error.message,
     });
   }
 };
@@ -74,10 +74,10 @@ const requireAdmin = (req, res, next) => {
   if (req.userRole !== 'admin') {
     return res.status(403).json({
       success: false,
-      message: 'Acesso negado. Permissão de administrador necessária.'
+      message: 'Acesso negado. Permissão de administrador necessária.',
     });
   }
-  
+
   next();
 };
 
@@ -88,15 +88,15 @@ const requireGameMaster = (req, res, next) => {
   if (req.userRole !== 'admin' && req.userRole !== 'game_master') {
     return res.status(403).json({
       success: false,
-      message: 'Acesso negado. Permissão de Game Master necessária.'
+      message: 'Acesso negado. Permissão de Game Master necessária.',
     });
   }
-  
+
   next();
 };
 
 module.exports = {
   authenticate,
   requireAdmin,
-  requireGameMaster
-}; 
+  requireGameMaster,
+};

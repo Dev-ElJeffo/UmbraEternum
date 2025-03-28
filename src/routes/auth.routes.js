@@ -17,9 +17,9 @@ const generateTokens = async (user) => {
   const payload = {
     userId: user.id,
     username: user.username,
-    role: user.role
+    role: user.role,
   };
-  
+
   // Obter o segredo JWT da configuração
   let secret = jwtConfig.secret;
   if (!secret) {
@@ -27,23 +27,20 @@ const generateTokens = async (user) => {
     // Fallback para desenvolvimento - NÃO use em produção!
     secret = 'umbraeternum_dev_secret';
   }
-  
+
   try {
     // Gerar o token com payload, secret e opções
-    const accessToken = jwt.sign(payload, secret, { 
-      expiresIn: jwtConfig.expiresIn 
+    const accessToken = jwt.sign(payload, secret, {
+      expiresIn: jwtConfig.expiresIn,
     });
 
     // Token de atualização (refresh)
-    const refreshToken = await RefreshTokenModel.create(
-      user.id,
-      jwtConfig.refreshExpiresIn
-    );
+    const refreshToken = await RefreshTokenModel.create(user.id, jwtConfig.refreshExpiresIn);
 
     return {
       accessToken,
       refreshToken: refreshToken.token,
-      expiresIn: jwtConfig.expiresIn
+      expiresIn: jwtConfig.expiresIn,
     };
   } catch (error) {
     logger.error('Erro ao gerar tokens JWT:', error);
@@ -61,76 +58,65 @@ const registerValidations = [
     .matches(/^[a-zA-Z0-9_]+$/)
     .withMessage('Nome de usuário pode conter apenas letras, números e sublinhado'),
 
-  body('email')
-    .isEmail()
-    .withMessage('Email inválido')
-    .normalizeEmail(),
+  body('email').isEmail().withMessage('Email inválido').normalizeEmail(),
 
   body('password')
     .isString()
     .isLength({ min: 8 })
     .withMessage('Senha deve ter no mínimo 8 caracteres')
     .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/)
-    .withMessage('Senha deve conter pelo menos uma letra maiúscula, uma minúscula e um número')
+    .withMessage('Senha deve conter pelo menos uma letra maiúscula, uma minúscula e um número'),
 ];
 
 // Validações para login
-const loginValidations = [
-  body('username').isString().trim(),
-  body('password').isString()
-];
+const loginValidations = [body('username').isString().trim(), body('password').isString()];
 
 // Rota de registro
-router.post(
-  '/register',
-  sanitizeBody,
-  validate(registerValidations),
-  async (req, res, next) => {
-    try {
-      const { username, email, password } = req.body;
+router.post('/register', sanitizeBody, validate(registerValidations), async (req, res, next) => {
+  try {
+    const { username, email, password } = req.body;
 
-      // Verificar se username já existe
-      const existingUsername = await UserModel.findByUsername(username);
-      if (existingUsername) {
-        throw createError('Nome de usuário já está em uso', 409, 'USERNAME_TAKEN');
-      }
-
-      // Verificar se email já existe
-      const existingEmail = await UserModel.findByEmail(email);
-      if (existingEmail) {
-        throw createError('Email já está em uso', 409, 'EMAIL_TAKEN');
-      }
-
-      // Criar usuário
-      const newUser = await UserModel.create({
-        username,
-        email,
-        password,
-        role: 'user',
-        status: 'active'
-      });
-
-      // Gerar tokens
-      const tokens = await generateTokens({
-        id: newUser.id,
-        username: newUser.username,
-        role: newUser.role
-      });
-
-      // Atualizar último login
-      await UserModel.updateLastLogin(newUser.id);
-
-      logger.info(`Novo usuário registrado: ${username}`);
-      res.status(201).json({
-        message: 'Usuário registrado com sucesso',
-        user: newUser,
-        ...tokens
-      });
-    } catch (error) {
-      next(error);
+    // Verificar se username já existe
+    const existingUsername = await UserModel.findByUsername(username);
+    if (existingUsername) {
+      throw createError('Nome de usuário já está em uso', 409, 'USERNAME_TAKEN');
     }
+
+    // Verificar se email já existe
+    const existingEmail = await UserModel.findByEmail(email);
+    if (existingEmail) {
+      throw createError('Email já está em uso', 409, 'EMAIL_TAKEN');
+    }
+
+    // Criar usuário
+    const newUser = await UserModel.create({
+      username,
+      email,
+      password,
+      role: 'user',
+      status: 'active',
+    });
+
+    // Gerar tokens
+    const tokens = await generateTokens({
+      id: newUser.id,
+      username: newUser.username,
+      role: newUser.role,
+    });
+
+    // Atualizar último login
+    await UserModel.updateLastLogin(newUser.id);
+
+    logger.info(`Novo usuário registrado: ${username}`);
+    res.status(201).json({
+      message: 'Usuário registrado com sucesso',
+      user: newUser,
+      ...tokens,
+    });
+  } catch (error) {
+    next(error);
   }
-);
+});
 
 // Rota de login
 router.post(
@@ -163,7 +149,7 @@ router.post(
       const tokens = await generateTokens({
         id: user.id,
         username: user.username,
-        role: user.role || 'user'
+        role: user.role || 'user',
       });
 
       // Atualizar último login
@@ -176,9 +162,9 @@ router.post(
           id: user.id,
           username: user.username,
           email: user.email,
-          role: user.role
+          role: user.role,
         },
-        ...tokens
+        ...tokens,
       });
     } catch (error) {
       next(error);
@@ -225,13 +211,13 @@ router.post('/refresh-token', async (req, res, next) => {
     const tokens = await generateTokens({
       id: user.id,
       username: user.username,
-      role: user.role
+      role: user.role,
     });
 
     logger.info(`Token renovado para o usuário: ${user.username}`);
     res.json({
       message: 'Token renovado com sucesso',
-      ...tokens
+      ...tokens,
     });
   } catch (error) {
     next(error);
@@ -256,4 +242,4 @@ router.post('/logout', async (req, res, next) => {
   }
 });
 
-module.exports = router; 
+module.exports = router;

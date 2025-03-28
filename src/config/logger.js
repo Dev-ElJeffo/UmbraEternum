@@ -13,9 +13,7 @@ if (!fs.existsSync(logDir)) {
 
 const logFormat = winston.format.combine(
   winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
-  winston.format.printf(
-    info => `${info.timestamp} ${info.level}: ${info.message}`
-  )
+  winston.format.printf((info) => `${info.timestamp} ${info.level}: ${info.message}`)
 );
 
 const logLevel = process.env.LOG_LEVEL || 'info';
@@ -27,26 +25,23 @@ const logger = winston.createLogger({
   transports: [
     // Log para console
     new winston.transports.Console({
-      format: winston.format.combine(
-        winston.format.colorize(),
-        logFormat
-      )
+      format: winston.format.combine(winston.format.colorize(), logFormat),
     }),
     // Log de erros para arquivo
     new winston.transports.File({
       filename: path.join(logDir, 'error.log'),
-      level: 'error'
+      level: 'error',
     }),
     // Log combinado para arquivo
     new winston.transports.File({
-      filename: path.join(logDir, 'combined.log')
-    })
+      filename: path.join(logDir, 'combined.log'),
+    }),
   ],
   exceptionHandlers: [
     new winston.transports.File({
-      filename: path.join(logDir, 'exceptions.log')
-    })
-  ]
+      filename: path.join(logDir, 'exceptions.log'),
+    }),
+  ],
 });
 
 // Função de log para requisições HTTP
@@ -60,4 +55,4 @@ const httpLogger = (req, res, next) => {
   next();
 };
 
-module.exports = { logger, httpLogger }; 
+module.exports = { logger, httpLogger };

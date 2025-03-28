@@ -73,4 +73,4 @@ const initializeDatabase = async (): Promise<void> => {
   }
 };
 
-export default initializeDatabase; 
+export default initializeDatabase;

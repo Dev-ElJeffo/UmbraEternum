@@ -1,0 +1,61 @@
+name: UmbraEternum Tests
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: umbraeternum_test
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x]
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Copy environment variables
+      run: cp .env.example .env.test || cp .env .env.test || echo "DATABASE_HOST=localhost" > .env.test
+      
+    - name: Initialize database
+      run: |
+        mysql -h127.0.0.1 -uroot -proot -e "CREATE DATABASE IF NOT EXISTS umbraeternum_test;"
+        mysql -h127.0.0.1 -uroot -proot umbraeternum_test < database/structure.sql || echo "No database structure file found"
+      
+    - name: Build
+      run: npm run build
+      
+    - name: Run basic tests
+      run: npm run test:basic
+      
+    - name: Run all tests
+      run: npm run test:all
+      
+    - name: Archive test results
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: test-coverage
+        path: coverage/ 

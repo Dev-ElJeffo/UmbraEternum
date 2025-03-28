@@ -29,46 +29,50 @@ declare global {
 /**
  * Middleware para verificar autenticação JWT
  */
-export const authenticateJWT = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const authenticateJWT = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
   try {
     const authHeader = req.headers.authorization;
-    
+
     if (!authHeader) {
       res.status(401).json({ message: 'Token de autenticação não fornecido' });
       return;
     }
-    
+
     const tokenParts = authHeader.split(' ');
     if (tokenParts.length !== 2 || tokenParts[0] !== 'Bearer') {
       res.status(401).json({ message: 'Formato de token inválido' });
       return;
     }
-    
+
     const token = tokenParts[1];
-    
+
     try {
       const decoded = jwt.verify(token, jwtConfig.secret) as DecodedToken;
-      
+
       // Verificar se o usuário ainda existe no banco de dados
       const user = await UserModel.findById(decoded.userId);
       if (!user) {
         res.status(401).json({ message: 'Usuário não encontrado ou inativo' });
         return;
       }
-      
+
       // Verificar se o usuário está ativo
       if (user.status !== 'active') {
         res.status(403).json({ message: 'Conta de usuário inativa ou banida' });
         return;
       }
-      
+
       // Adicionar informações do usuário ao objeto de requisição
       req.user = {
         id: decoded.userId,
         username: decoded.username,
-        role: decoded.role
+        role: decoded.role,
       };
-      
+
       next();
     } catch (error) {
       if (error instanceof jwt.TokenExpiredError) {
@@ -94,12 +98,12 @@ export const requireAdmin = (req: Request, res: Response, next: NextFunction): v
     res.status(401).json({ message: 'Autenticação necessária' });
     return;
   }
-  
+
   if (req.user.role !== 'admin') {
     res.status(403).json({ message: 'Acesso negado: permissões de administrador necessárias' });
     return;
   }
-  
+
   next();
 };
 
@@ -111,11 +115,11 @@ export const requireModerator = (req: Request, res: Response, next: NextFunction
     res.status(401).json({ message: 'Autenticação necessária' });
     return;
   }
-  
+
   if (req.user.role !== 'admin' && req.user.role !== 'moderator') {
     res.status(403).json({ message: 'Acesso negado: permissões de moderador necessárias' });
     return;
   }
-  
+
   next();
-}; 
+};

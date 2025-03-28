@@ -18,27 +18,27 @@ export const errorHandler = (
 ): void => {
   // Define o código de status (padrão: 500)
   const statusCode = err.statusCode || 500;
-  
+
   // Mensagem de erro para o cliente
   let message = 'Erro interno no servidor';
-  
+
   // Em ambiente de desenvolvimento, mostrar o erro completo
   // Em produção, mostrar mensagens mais genéricas para erros do servidor
   if (process.env.NODE_ENV === 'development' || statusCode < 500) {
     message = err.message;
   }
-  
+
   // Log do erro
   logger.error(`${statusCode} - ${err.message}`, err);
-  
+
   // Resposta para o cliente
   res.status(statusCode).json({
     error: {
       message,
       code: err.code || 'INTERNAL_ERROR',
       // Incluir stack trace apenas em desenvolvimento
-      ...(process.env.NODE_ENV === 'development' && { stack: err.stack })
-    }
+      ...(process.env.NODE_ENV === 'development' && { stack: err.stack }),
+    },
   });
 };
 
@@ -50,8 +50,8 @@ export const notFoundHandler = (req: Request, res: Response): void => {
   res.status(404).json({
     error: {
       message: 'Recurso não encontrado',
-      code: 'NOT_FOUND'
-    }
+      code: 'NOT_FOUND',
+    },
   });
 };
 
@@ -65,4 +65,4 @@ export const createError = (message: string, statusCode: number, code?: string):
     error.code = code;
   }
   return error;
-}; 
+};

@@ -11,7 +11,7 @@ const notFound = (req, res, next) => {
 const errorHandler = (err, req, res, next) => {
   const statusCode = err.statusCode || 500;
   const errorCode = err.code || 'INTERNAL_ERROR';
-  
+
   // Logar o erro
   logger.error(`${statusCode} - ${err.message}`, {
     error: err,
@@ -20,15 +20,15 @@ const errorHandler = (err, req, res, next) => {
     ip: req.ip,
     body: req.body,
     params: req.params,
-    query: req.query
+    query: req.query,
   });
-  
+
   // Responder com JSON
   res.status(statusCode).json({
     success: false,
     message: err.message || 'Erro interno do servidor',
     code: errorCode,
-    stack: process.env.NODE_ENV === 'development' ? err.stack : undefined
+    stack: process.env.NODE_ENV === 'development' ? err.stack : undefined,
   });
 };
 
@@ -43,5 +43,5 @@ const createError = (message, statusCode = 500, code = 'INTERNAL_ERROR') => {
 module.exports = {
   notFound,
   errorHandler,
-  createError
-}; 
+  createError,
+};

@@ -23,7 +23,7 @@ const characterValidations = [
     .isString()
     .trim()
     .isIn(['guerreiro', 'mago', 'arqueiro', 'sacerdote', 'assassino', 'paladino'])
-    .withMessage('Classe do personagem inválida')
+    .withMessage('Classe do personagem inválida'),
 ];
 
 // Rota para listar personagens do usuário logado
@@ -33,7 +33,7 @@ router.get('/', async (req, res, next) => {
     const characters = await CharacterModel.findByUserId(userId);
 
     res.json({
-      data: characters
+      data: characters,
     });
   } catch (error) {
     next(error);
@@ -62,7 +62,7 @@ router.get(
       }
 
       res.json({
-        data: character
+        data: character,
       });
     } catch (error) {
       next(error);
@@ -71,51 +71,43 @@ router.get(
 );
 
 // Rota para criar um novo personagem
-router.post(
-  '/',
-  sanitizeBody,
-  validate(characterValidations),
-  async (req, res, next) => {
-    try {
-      const userId = req.user!.id;
-      const { name, class: characterClass } = req.body;
+router.post('/', sanitizeBody, validate(characterValidations), async (req, res, next) => {
+  try {
+    const userId = req.user!.id;
+    const { name, class: characterClass } = req.body;
 
-      // Verificar quantidade de personagens (limite de 3 por usuário)
-      const existingCharacters = await CharacterModel.findByUserId(userId);
-      if (existingCharacters.length >= 3) {
-        throw createError(
-          'Limite de personagens atingido (máximo: 3)',
-          400,
-          'CHARACTER_LIMIT_REACHED'
-        );
-      }
-
-      // Criar personagem
-      const newCharacter = await CharacterModel.create({
-        user_id: userId,
-        name,
-        class: characterClass
-      });
-
-      logger.info(`Novo personagem criado: ${name} para o usuário ID ${userId}`);
-      res.status(201).json({
-        message: 'Personagem criado com sucesso',
-        data: newCharacter
-      });
-    } catch (error) {
-      next(error);
+    // Verificar quantidade de personagens (limite de 3 por usuário)
+    const existingCharacters = await CharacterModel.findByUserId(userId);
+    if (existingCharacters.length >= 3) {
+      throw createError(
+        'Limite de personagens atingido (máximo: 3)',
+        400,
+        'CHARACTER_LIMIT_REACHED'
+      );
     }
+
+    // Criar personagem
+    const newCharacter = await CharacterModel.create({
+      user_id: userId,
+      name,
+      class: characterClass,
+    });
+
+    logger.info(`Novo personagem criado: ${name} para o usuário ID ${userId}`);
+    res.status(201).json({
+      message: 'Personagem criado com sucesso',
+      data: newCharacter,
+    });
+  } catch (error) {
+    next(error);
   }
-);
+});
 
 // Rota para atualizar um personagem
 router.put(
   '/:id',
   sanitizeBody,
-  validate([
-    param('id').isInt().withMessage('ID inválido'),
-    ...characterValidations
-  ]),
+  validate([param('id').isInt().withMessage('ID inválido'), ...characterValidations]),
   async (req, res, next) => {
     try {
       const characterId = parseInt(req.params.id, 10);
@@ -136,13 +128,13 @@ router.put(
       // Atualizar personagem
       const updatedCharacter = await CharacterModel.update(characterId, {
         name,
-        class: characterClass
+        class: characterClass,
       });
 
       logger.info(`Personagem atualizado: ${name} (ID: ${characterId})`);
       res.json({
         message: 'Personagem atualizado com sucesso',
-        data: updatedCharacter
+        data: updatedCharacter,
       });
     } catch (error) {
       next(error);
@@ -181,4 +173,4 @@ router.delete(
   }
 );
 
-export default router; 
+export default router;

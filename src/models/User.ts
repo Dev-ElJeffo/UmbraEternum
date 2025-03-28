@@ -34,7 +34,7 @@ class UserModel {
       // Hash da senha com bcrypt
       const saltRounds = 10;
       const hashedPassword = await bcrypt.hash(userData.password, saltRounds);
-      
+
       const [result] = await pool.query(
         `INSERT INTO users (username, email, password, role, status, avatar_url) 
          VALUES (?, ?, ?, ?, ?, ?)`,
@@ -44,19 +44,19 @@ class UserModel {
           hashedPassword,
           userData.role || 'user',
           userData.status || 'active',
-          userData.avatar_url || null
+          userData.avatar_url || null,
         ]
       );
-      
+
       // @ts-ignore - Acessando o insertId do MySQL
       const userId = result.insertId;
-      
+
       // Buscar o usuário recém-criado
       const [users]: any = await pool.query(
         'SELECT id, username, email, role, created_at, status, avatar_url FROM users WHERE id = ?',
         [userId]
       );
-      
+
       return users[0] as UserResponse;
     } catch (error) {
       logger.error('Erro ao criar usuário:', error);
@@ -69,12 +69,9 @@ class UserModel {
    */
   async findByUsername(username: string): Promise<User | null> {
     try {
-      const [users]: any = await pool.query(
-        'SELECT * FROM users WHERE username = ?',
-        [username]
-      );
-      
-      return users.length > 0 ? users[0] as User : null;
+      const [users]: any = await pool.query('SELECT * FROM users WHERE username = ?', [username]);
+
+      return users.length > 0 ? (users[0] as User) : null;
     } catch (error) {
       logger.error('Erro ao buscar usuário por nome de usuário:', error);
       throw error;
@@ -86,12 +83,9 @@ class UserModel {
    */
   async findByEmail(email: string): Promise<User | null> {
     try {
-      const [users]: any = await pool.query(
-        'SELECT * FROM users WHERE email = ?',
-        [email]
-      );
-      
-      return users.length > 0 ? users[0] as User : null;
+      const [users]: any = await pool.query('SELECT * FROM users WHERE email = ?', [email]);
+
+      return users.length > 0 ? (users[0] as User) : null;
     } catch (error) {
       logger.error('Erro ao buscar usuário por email:', error);
       throw error;
@@ -107,8 +101,8 @@ class UserModel {
         'SELECT id, username, email, role, created_at, status, avatar_url FROM users WHERE id = ?',
         [id]
       );
-      
-      return users.length > 0 ? users[0] as UserResponse : null;
+
+      return users.length > 0 ? (users[0] as UserResponse) : null;
     } catch (error) {
       logger.error('Erro ao buscar usuário por ID:', error);
       throw error;
@@ -125,27 +119,24 @@ class UserModel {
         const saltRounds = 10;
         userData.password = await bcrypt.hash(userData.password, saltRounds);
       }
-      
+
       // Construir a query dinamicamente com base nos campos fornecidos
       const fields: string[] = [];
       const values: any[] = [];
-      
+
       Object.entries(userData).forEach(([key, value]) => {
         if (key !== 'id' && value !== undefined) {
           fields.push(`${key} = ?`);
           values.push(value);
         }
       });
-      
+
       // Adicionar ID no final dos valores
       values.push(id);
-      
+
       // Executar a atualização
-      await pool.query(
-        `UPDATE users SET ${fields.join(', ')} WHERE id = ?`,
-        values
-      );
-      
+      await pool.query(`UPDATE users SET ${fields.join(', ')} WHERE id = ?`, values);
+
       // Retornar o usuário atualizado
       return await this.findById(id);
     } catch (error) {
@@ -159,10 +150,7 @@ class UserModel {
    */
   async updateLastLogin(id: number): Promise<void> {
     try {
-      await pool.query(
-        'UPDATE users SET last_login = CURRENT_TIMESTAMP WHERE id = ?',
-        [id]
-      );
+      await pool.query('UPDATE users SET last_login = CURRENT_TIMESTAMP WHERE id = ?', [id]);
     } catch (error) {
       logger.error('Erro ao atualizar último login:', error);
       throw error;
@@ -182,4 +170,4 @@ class UserModel {
   }
 }
 
-export default new UserModel(); 
+export default new UserModel();

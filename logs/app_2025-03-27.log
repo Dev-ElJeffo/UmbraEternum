@@ -1820,3 +1820,292 @@
 [2025-03-27 15:26:01] [debug] Enviando requisição GET para: http://localhost:34567/api/status
 [2025-03-27 15:26:01] [debug] Cabeçalhos: ["Accept: application\/json","Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsInVzZXJuYW1lIjoiamVmZm8iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDMwOTk3NzcsImV4cCI6MTc0MzE4NjE3N30.lRweWGL_W01ziW_XvbHgMIpL52GtuiKX55wEW5wS-d0"]
 [2025-03-27 15:26:01] [debug] Resposta recebida (HTTP 200): {"success":true,"status":"online","timestamp":"2025-03-27T18:26:01.195Z","version":"1.0.0","onlinePlayers":0,"database":"connected"}
+[2025-03-27 18:09:01] [info] Aplicação iniciada - desenvolvimento - API: http://localhost:34567/api
+[2025-03-27 18:09:01] [debug] Enviando requisição GET para: http://localhost:34567/api/status
+[2025-03-27 18:09:01] [debug] Cabeçalhos: ["Accept: application\/json","Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsInVzZXJuYW1lIjoiamVmZm8iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDMwOTk3NzcsImV4cCI6MTc0MzE4NjE3N30.lRweWGL_W01ziW_XvbHgMIpL52GtuiKX55wEW5wS-d0"]
+[2025-03-27 18:09:01] [debug] Resposta recebida (HTTP 200): {"success":true,"status":"online","timestamp":"2025-03-27T21:09:01.272Z","version":"1.0.0","onlinePlayers":0,"database":"connected"}
+[2025-03-27 18:09:01] [info] Conexão com a API estabelecida: http://localhost:34567/api
+[2025-03-27 18:09:01] [info] Status do banco de dados: connected
+[2025-03-27 18:09:01] [info] Jogadores online: 0
+[2025-03-27 18:09:01] [info] Acesso à página inicial. Usuário autenticado: Sim
+[2025-03-27 18:09:01] [info] Acessando página inicial
+[2025-03-27 18:09:01] [debug] Carregando lista de jogadores
+[2025-03-27 18:09:01] [debug] Enviando requisição GET para: http://localhost:34567/api/status
+[2025-03-27 18:09:01] [debug] Cabeçalhos: ["Accept: application\/json","Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsInVzZXJuYW1lIjoiamVmZm8iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDMwOTk3NzcsImV4cCI6MTc0MzE4NjE3N30.lRweWGL_W01ziW_XvbHgMIpL52GtuiKX55wEW5wS-d0"]
+[2025-03-27 18:09:01] [debug] Resposta recebida (HTTP 200): {"success":true,"status":"online","timestamp":"2025-03-27T21:09:01.281Z","version":"1.0.0","onlinePlayers":0,"database":"connected"}
+[2025-03-27 18:09:05] [info] Aplicação iniciada - desenvolvimento - API: http://localhost:34567/api
+[2025-03-27 18:09:05] [debug] Enviando requisição GET para: http://localhost:34567/api/status
+[2025-03-27 18:09:05] [debug] Cabeçalhos: ["Accept: application\/json","Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsInVzZXJuYW1lIjoiamVmZm8iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDMwOTk3NzcsImV4cCI6MTc0MzE4NjE3N30.lRweWGL_W01ziW_XvbHgMIpL52GtuiKX55wEW5wS-d0"]
+[2025-03-27 18:09:05] [debug] Resposta recebida (HTTP 200): {"success":true,"status":"online","timestamp":"2025-03-27T21:09:05.497Z","version":"1.0.0","onlinePlayers":0,"database":"connected"}
+[2025-03-27 18:09:05] [info] Conexão com a API estabelecida: http://localhost:34567/api
+[2025-03-27 18:09:05] [info] Status do banco de dados: connected
+[2025-03-27 18:09:05] [info] Jogadores online: 0
+[2025-03-27 18:09:05] [info] Aplicação iniciada - desenvolvimento - API: http://localhost:34567/api
+[2025-03-27 18:09:05] [debug] Enviando requisição GET para: http://localhost:34567/api/status
+[2025-03-27 18:09:05] [debug] Cabeçalhos: ["Accept: application\/json","Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsInVzZXJuYW1lIjoiamVmZm8iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDMwOTk3NzcsImV4cCI6MTc0MzE4NjE3N30.lRweWGL_W01ziW_XvbHgMIpL52GtuiKX55wEW5wS-d0"]
+[2025-03-27 18:09:05] [debug] Resposta recebida (HTTP 200): {"success":true,"status":"online","timestamp":"2025-03-27T21:09:05.721Z","version":"1.0.0","onlinePlayers":0,"database":"connected"}
+[2025-03-27 18:09:05] [info] Conexão com a API estabelecida: http://localhost:34567/api
+[2025-03-27 18:09:05] [info] Status do banco de dados: connected
+[2025-03-27 18:09:05] [info] Jogadores online: 0
+[2025-03-27 18:09:13] [info] Aplicação iniciada - desenvolvimento - API: http://localhost:34567/api
+[2025-03-27 18:09:13] [debug] Enviando requisição GET para: http://localhost:34567/api/status
+[2025-03-27 18:09:13] [debug] Cabeçalhos: ["Accept: application\/json","Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsInVzZXJuYW1lIjoiamVmZm8iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDMwOTk3NzcsImV4cCI6MTc0MzE4NjE3N30.lRweWGL_W01ziW_XvbHgMIpL52GtuiKX55wEW5wS-d0"]
+[2025-03-27 18:09:13] [debug] Resposta recebida (HTTP 200): {"success":true,"status":"online","timestamp":"2025-03-27T21:09:13.164Z","version":"1.0.0","onlinePlayers":0,"database":"connected"}
+[2025-03-27 18:09:13] [info] Conexão com a API estabelecida: http://localhost:34567/api
+[2025-03-27 18:09:13] [info] Status do banco de dados: connected
+[2025-03-27 18:09:13] [info] Jogadores online: 0
+[2025-03-27 18:09:13] [info] Acesso à página inicial. Usuário autenticado: Sim
+[2025-03-27 18:09:13] [info] Acessando página inicial
+[2025-03-27 18:09:13] [debug] Carregando lista de jogadores
+[2025-03-27 18:09:13] [debug] Enviando requisição GET para: http://localhost:34567/api/status
+[2025-03-27 18:09:13] [debug] Cabeçalhos: ["Accept: application\/json","Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsInVzZXJuYW1lIjoiamVmZm8iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDMwOTk3NzcsImV4cCI6MTc0MzE4NjE3N30.lRweWGL_W01ziW_XvbHgMIpL52GtuiKX55wEW5wS-d0"]
+[2025-03-27 18:09:13] [debug] Resposta recebida (HTTP 200): {"success":true,"status":"online","timestamp":"2025-03-27T21:09:13.169Z","version":"1.0.0","onlinePlayers":0,"database":"connected"}
+[2025-03-27 20:58:22] [info] Aplicação iniciada - desenvolvimento - API: http://localhost:34567/api
+[2025-03-27 20:58:22] [debug] Enviando requisição GET para: http://localhost:34567/api/status
+[2025-03-27 20:58:22] [debug] Cabeçalhos: ["Accept: application\/json","Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsInVzZXJuYW1lIjoiamVmZm8iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDMwOTk3NzcsImV4cCI6MTc0MzE4NjE3N30.lRweWGL_W01ziW_XvbHgMIpL52GtuiKX55wEW5wS-d0"]
+[2025-03-27 20:58:22] [debug] Resposta recebida (HTTP 200): {"success":true,"status":"online","timestamp":"2025-03-27T23:58:22.806Z","version":"1.0.0","onlinePlayers":0,"database":"connected"}
+[2025-03-27 20:58:22] [info] Conexão com a API estabelecida: http://localhost:34567/api
+[2025-03-27 20:58:22] [info] Status do banco de dados: connected
+[2025-03-27 20:58:22] [info] Jogadores online: 0
+[2025-03-27 20:58:22] [info] Acesso à página inicial. Usuário autenticado: Sim
+[2025-03-27 20:58:22] [info] Acessando página inicial
+[2025-03-27 20:58:22] [debug] Carregando lista de jogadores
+[2025-03-27 20:58:22] [debug] Enviando requisição GET para: http://localhost:34567/api/status
+[2025-03-27 20:58:22] [debug] Cabeçalhos: ["Accept: application\/json","Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsInVzZXJuYW1lIjoiamVmZm8iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDMwOTk3NzcsImV4cCI6MTc0MzE4NjE3N30.lRweWGL_W01ziW_XvbHgMIpL52GtuiKX55wEW5wS-d0"]
+[2025-03-27 20:58:22] [debug] Resposta recebida (HTTP 200): {"success":true,"status":"online","timestamp":"2025-03-27T23:58:22.815Z","version":"1.0.0","onlinePlayers":0,"database":"connected"}
+[2025-03-27 20:59:01] [info] Aplicação iniciada - desenvolvimento - API: http://localhost:34567/api
+[2025-03-27 20:59:01] [debug] Enviando requisição GET para: http://localhost:34567/api/status
+[2025-03-27 20:59:01] [debug] Cabeçalhos: ["Accept: application\/json","Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsInVzZXJuYW1lIjoiamVmZm8iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDMwOTk3NzcsImV4cCI6MTc0MzE4NjE3N30.lRweWGL_W01ziW_XvbHgMIpL52GtuiKX55wEW5wS-d0"]
+[2025-03-27 20:59:01] [debug] Resposta recebida (HTTP 200): {"success":true,"status":"online","timestamp":"2025-03-27T23:59:01.929Z","version":"1.0.0","onlinePlayers":0,"database":"connected"}
+[2025-03-27 20:59:01] [info] Conexão com a API estabelecida: http://localhost:34567/api
+[2025-03-27 20:59:01] [info] Status do banco de dados: connected
+[2025-03-27 20:59:01] [info] Jogadores online: 0
+[2025-03-27 20:59:01] [info] Logout iniciado para o usuário: jeffo
+[2025-03-27 20:59:01] [info] Sessão destruída para o usuário: jeffo
+[2025-03-27 20:59:01] [info] Aplicação iniciada - desenvolvimento - API: http://localhost:34567/api
+[2025-03-27 20:59:01] [debug] Enviando requisição GET para: http://localhost:34567/api/status
+[2025-03-27 20:59:01] [debug] Cabeçalhos: ["Accept: application\/json"]
+[2025-03-27 20:59:01] [debug] Resposta recebida (HTTP 200): {"success":true,"status":"online","timestamp":"2025-03-27T23:59:01.942Z","version":"1.0.0","onlinePlayers":0,"database":"connected"}
+[2025-03-27 20:59:01] [info] Conexão com a API estabelecida: http://localhost:34567/api
+[2025-03-27 20:59:01] [info] Status do banco de dados: connected
+[2025-03-27 20:59:01] [info] Jogadores online: 0
+[2025-03-27 20:59:19] [info] Aplicação iniciada - desenvolvimento - API: http://localhost:34567/api
+[2025-03-27 20:59:19] [debug] Enviando requisição GET para: http://localhost:34567/api/status
+[2025-03-27 20:59:19] [debug] Cabeçalhos: ["Accept: application\/json"]
+[2025-03-27 20:59:19] [debug] Resposta recebida (HTTP 200): {"success":true,"status":"online","timestamp":"2025-03-27T23:59:19.411Z","version":"1.0.0","onlinePlayers":0,"database":"connected"}
+[2025-03-27 20:59:19] [info] Conexão com a API estabelecida: http://localhost:34567/api
+[2025-03-27 20:59:19] [info] Status do banco de dados: connected
+[2025-03-27 20:59:19] [info] Jogadores online: 0
+[2025-03-27 20:59:19] [debug] Tentativa de login iniciada
+[2025-03-27 20:59:19] [info] Tentativa de login para usuário: jeffo
+[2025-03-27 20:59:19] [debug] Enviando requisição POST para: http://localhost:34567/api/auth/login
+[2025-03-27 20:59:19] [debug] Dados: {"username":"jeffo","password":"asdfgh123"}
+[2025-03-27 20:59:19] [debug] Cabeçalhos: ["Content-Type: application\/json","Accept: application\/json"]
+[2025-03-27 20:59:19] [debug] Resposta recebida (HTTP 401): {"success":false,"message":"Credenciais inválidas"}
+[2025-03-27 20:59:19] [warning] Falha no login para usuário: jeffo - Motivo: Credenciais inválidas
+[2025-03-27 20:59:22] [info] Aplicação iniciada - desenvolvimento - API: http://localhost:34567/api
+[2025-03-27 20:59:22] [debug] Enviando requisição GET para: http://localhost:34567/api/status
+[2025-03-27 20:59:22] [debug] Cabeçalhos: ["Accept: application\/json"]
+[2025-03-27 20:59:22] [debug] Resposta recebida (HTTP 200): {"success":true,"status":"online","timestamp":"2025-03-27T23:59:22.998Z","version":"1.0.0","onlinePlayers":0,"database":"connected"}
+[2025-03-27 20:59:23] [info] Conexão com a API estabelecida: http://localhost:34567/api
+[2025-03-27 20:59:23] [info] Status do banco de dados: connected
+[2025-03-27 20:59:23] [info] Jogadores online: 0
+[2025-03-27 20:59:23] [info] Acesso à página inicial. Usuário autenticado: Não
+[2025-03-27 20:59:23] [info] Acessando página inicial
+[2025-03-27 20:59:23] [debug] Carregando lista de jogadores
+[2025-03-27 20:59:23] [debug] Enviando requisição GET para: http://localhost:34567/api/status
+[2025-03-27 20:59:23] [debug] Cabeçalhos: ["Accept: application\/json"]
+[2025-03-27 20:59:23] [debug] Resposta recebida (HTTP 200): {"success":true,"status":"online","timestamp":"2025-03-27T23:59:23.004Z","version":"1.0.0","onlinePlayers":0,"database":"connected"}
+[2025-03-27 20:59:25] [info] Aplicação iniciada - desenvolvimento - API: http://localhost:34567/api
+[2025-03-27 20:59:25] [debug] Enviando requisição GET para: http://localhost:34567/api/status
+[2025-03-27 20:59:25] [debug] Cabeçalhos: ["Accept: application\/json"]
+[2025-03-27 20:59:25] [debug] Resposta recebida (HTTP 200): {"success":true,"status":"online","timestamp":"2025-03-27T23:59:25.510Z","version":"1.0.0","onlinePlayers":0,"database":"connected"}
+[2025-03-27 20:59:25] [info] Conexão com a API estabelecida: http://localhost:34567/api
+[2025-03-27 20:59:25] [info] Status do banco de dados: connected
+[2025-03-27 20:59:25] [info] Jogadores online: 0
+[2025-03-27 20:59:31] [info] Aplicação iniciada - desenvolvimento - API: http://localhost:34567/api
+[2025-03-27 20:59:31] [debug] Enviando requisição GET para: http://localhost:34567/api/status
+[2025-03-27 20:59:31] [debug] Cabeçalhos: ["Accept: application\/json"]
+[2025-03-27 20:59:31] [debug] Resposta recebida (HTTP 200): {"success":true,"status":"online","timestamp":"2025-03-27T23:59:31.409Z","version":"1.0.0","onlinePlayers":0,"database":"connected"}
+[2025-03-27 20:59:31] [info] Conexão com a API estabelecida: http://localhost:34567/api
+[2025-03-27 20:59:31] [info] Status do banco de dados: connected
+[2025-03-27 20:59:31] [info] Jogadores online: 0
+[2025-03-27 20:59:31] [debug] Tentativa de login iniciada
+[2025-03-27 20:59:31] [info] Tentativa de login para usuário: admin
+[2025-03-27 20:59:31] [debug] Enviando requisição POST para: http://localhost:34567/api/auth/login
+[2025-03-27 20:59:31] [debug] Dados: {"username":"admin","password":"admin123"}
+[2025-03-27 20:59:31] [debug] Cabeçalhos: ["Content-Type: application\/json","Accept: application\/json"]
+[2025-03-27 20:59:31] [debug] Resposta recebida (HTTP 401): {"success":false,"message":"Credenciais inválidas"}
+[2025-03-27 20:59:31] [warning] Falha no login para usuário: admin - Motivo: Credenciais inválidas
+[2025-03-27 21:03:11] [info] Aplicação iniciada - desenvolvimento - API: http://localhost:34567/api
+[2025-03-27 21:03:11] [debug] Enviando requisição GET para: http://localhost:34567/api/status
+[2025-03-27 21:03:11] [debug] Cabeçalhos: ["Accept: application\/json"]
+[2025-03-27 21:03:11] [debug] Resposta recebida (HTTP 200): {"success":true,"status":"online","timestamp":"2025-03-28T00:03:11.626Z","version":"1.0.0","onlinePlayers":0,"database":"connected"}
+[2025-03-27 21:03:11] [info] Conexão com a API estabelecida: http://localhost:34567/api
+[2025-03-27 21:03:11] [info] Status do banco de dados: connected
+[2025-03-27 21:03:11] [info] Jogadores online: 0
+[2025-03-27 21:03:11] [info] Acesso à página inicial. Usuário autenticado: Não
+[2025-03-27 21:03:11] [info] Acessando página inicial
+[2025-03-27 21:03:11] [debug] Carregando lista de jogadores
+[2025-03-27 21:03:11] [debug] Enviando requisição GET para: http://localhost:34567/api/status
+[2025-03-27 21:03:11] [debug] Cabeçalhos: ["Accept: application\/json"]
+[2025-03-27 21:03:11] [debug] Resposta recebida (HTTP 200): {"success":true,"status":"online","timestamp":"2025-03-28T00:03:11.633Z","version":"1.0.0","onlinePlayers":0,"database":"connected"}
+[2025-03-27 21:18:53] [info] Aplicação iniciada - desenvolvimento - API: http://localhost:34567/api
+[2025-03-27 21:18:53] [debug] Enviando requisição GET para: http://localhost:34567/api/status
+[2025-03-27 21:18:53] [debug] Cabeçalhos: ["Accept: application\/json"]
+[2025-03-27 21:18:53] [debug] Resposta recebida (HTTP 200): {"success":true,"status":"online","timestamp":"2025-03-28T00:18:53.517Z","version":"1.0.0","onlinePlayers":0,"database":"connected"}
+[2025-03-27 21:18:53] [info] Conexão com a API estabelecida: http://localhost:34567/api
+[2025-03-27 21:18:53] [info] Status do banco de dados: connected
+[2025-03-27 21:18:53] [info] Jogadores online: 0
+[2025-03-27 21:18:53] [info] Acesso à página inicial. Usuário autenticado: Não
+[2025-03-27 21:18:53] [info] Acessando página inicial
+[2025-03-27 21:18:53] [debug] Carregando lista de jogadores
+[2025-03-27 21:18:53] [debug] Enviando requisição GET para: http://localhost:34567/api/status
+[2025-03-27 21:18:53] [debug] Cabeçalhos: ["Accept: application\/json"]
+[2025-03-27 21:18:53] [debug] Resposta recebida (HTTP 200): {"success":true,"status":"online","timestamp":"2025-03-28T00:18:53.527Z","version":"1.0.0","onlinePlayers":0,"database":"connected"}
+[2025-03-27 21:18:54] [info] Aplicação iniciada - desenvolvimento - API: http://localhost:34567/api
+[2025-03-27 21:18:54] [debug] Enviando requisição GET para: http://localhost:34567/api/status
+[2025-03-27 21:18:54] [debug] Cabeçalhos: ["Accept: application\/json"]
+[2025-03-27 21:18:54] [debug] Resposta recebida (HTTP 200): {"success":true,"status":"online","timestamp":"2025-03-28T00:18:54.677Z","version":"1.0.0","onlinePlayers":0,"database":"connected"}
+[2025-03-27 21:18:54] [info] Conexão com a API estabelecida: http://localhost:34567/api
+[2025-03-27 21:18:54] [info] Status do banco de dados: connected
+[2025-03-27 21:18:54] [info] Jogadores online: 0
+[2025-03-27 21:19:22] [info] Aplicação iniciada - desenvolvimento - API: http://localhost:34567/api
+[2025-03-27 21:19:22] [debug] Enviando requisição GET para: http://localhost:34567/api/status
+[2025-03-27 21:19:22] [debug] Cabeçalhos: ["Accept: application\/json"]
+[2025-03-27 21:19:22] [debug] Resposta recebida (HTTP 200): {"success":true,"status":"online","timestamp":"2025-03-28T00:19:22.610Z","version":"1.0.0","onlinePlayers":0,"database":"connected"}
+[2025-03-27 21:19:22] [info] Conexão com a API estabelecida: http://localhost:34567/api
+[2025-03-27 21:19:22] [info] Status do banco de dados: connected
+[2025-03-27 21:19:22] [info] Jogadores online: 0
+[2025-03-27 21:19:41] [info] Aplicação iniciada - desenvolvimento - API: http://localhost:34567/api
+[2025-03-27 21:19:41] [debug] Enviando requisição GET para: http://localhost:34567/api/status
+[2025-03-27 21:19:41] [debug] Cabeçalhos: ["Accept: application\/json"]
+[2025-03-27 21:19:41] [debug] Resposta recebida (HTTP 200): {"success":true,"status":"online","timestamp":"2025-03-28T00:19:41.649Z","version":"1.0.0","onlinePlayers":0,"database":"connected"}
+[2025-03-27 21:19:41] [info] Conexão com a API estabelecida: http://localhost:34567/api
+[2025-03-27 21:19:41] [info] Status do banco de dados: connected
+[2025-03-27 21:19:41] [info] Jogadores online: 0
+[2025-03-27 21:19:41] [debug] Tentativa de registro iniciada
+[2025-03-27 21:19:41] [info] Tentativa de registro para usuário: jeffo, email: jeffo@jeffo.com
+[2025-03-27 21:19:41] [debug] Enviando requisição POST para: http://localhost:34567/api/auth/register
+[2025-03-27 21:19:41] [debug] Dados: {"username":"jeffo","email":"jeffo@jeffo.com","password":"!Jeffo123"}
+[2025-03-27 21:19:41] [debug] Cabeçalhos: ["Content-Type: application\/json","Accept: application\/json"]
+[2025-03-27 21:19:41] [debug] Resposta recebida (HTTP 201): {"success":true,"message":"Registro realizado com sucesso","accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI2LCJ1c2VybmFtZSI6ImplZmZvIiwicm9sZSI6InBsYXllciIsImlhdCI6MTc0MzEyMTE4MSwiZXhwIjoxNzQzMjA3NTgxfQ.gLfphPOOnJ_IuqoEENlsTbwMMD881XlVff798UHhKGQ","user":{"id":26,"username":"jeffo","email":"jeffo@jeffo.com","role":"player"}}
+[2025-03-27 21:19:41] [debug] Resposta da API de registro: {"success":true,"message":"Registro realizado com sucesso","accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI2LCJ1c2VybmFtZSI6ImplZmZvIiwicm9sZSI6InBsYXllciIsImlhdCI6MTc0MzEyMTE4MSwiZXhwIjoxNzQzMjA3NTgxfQ.gLfphPOOnJ_IuqoEENlsTbwMMD881XlVff798UHhKGQ","user":{"id":26,"username":"jeffo","email":"jeffo@jeffo.com","role":"player"},"http_code":201}
+[2025-03-27 21:19:41] [info] Registro bem-sucedido para usuário: jeffo
+[2025-03-27 21:19:46] [info] Aplicação iniciada - desenvolvimento - API: http://localhost:34567/api
+[2025-03-27 21:19:46] [debug] Enviando requisição GET para: http://localhost:34567/api/status
+[2025-03-27 21:19:46] [debug] Cabeçalhos: ["Accept: application\/json"]
+[2025-03-27 21:19:46] [debug] Resposta recebida (HTTP 200): {"success":true,"status":"online","timestamp":"2025-03-28T00:19:46.364Z","version":"1.0.0","onlinePlayers":0,"database":"connected"}
+[2025-03-27 21:19:46] [info] Conexão com a API estabelecida: http://localhost:34567/api
+[2025-03-27 21:19:46] [info] Status do banco de dados: connected
+[2025-03-27 21:19:46] [info] Jogadores online: 0
+[2025-03-27 21:19:52] [info] Aplicação iniciada - desenvolvimento - API: http://localhost:34567/api
+[2025-03-27 21:19:52] [debug] Enviando requisição GET para: http://localhost:34567/api/status
+[2025-03-27 21:19:52] [debug] Cabeçalhos: ["Accept: application\/json"]
+[2025-03-27 21:19:52] [debug] Resposta recebida (HTTP 200): {"success":true,"status":"online","timestamp":"2025-03-28T00:19:52.569Z","version":"1.0.0","onlinePlayers":0,"database":"connected"}
+[2025-03-27 21:19:52] [info] Conexão com a API estabelecida: http://localhost:34567/api
+[2025-03-27 21:19:52] [info] Status do banco de dados: connected
+[2025-03-27 21:19:52] [info] Jogadores online: 0
+[2025-03-27 21:19:52] [debug] Tentativa de login iniciada
+[2025-03-27 21:19:52] [info] Tentativa de login para usuário: jeffo
+[2025-03-27 21:19:52] [debug] Enviando requisição POST para: http://localhost:34567/api/auth/login
+[2025-03-27 21:19:52] [debug] Dados: {"username":"jeffo","password":"!Jeffo123"}
+[2025-03-27 21:19:52] [debug] Cabeçalhos: ["Content-Type: application\/json","Accept: application\/json"]
+[2025-03-27 21:19:52] [debug] Resposta recebida (HTTP 200): {"success":true,"message":"Login realizado com sucesso","accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI2LCJ1c2VybmFtZSI6ImplZmZvIiwicm9sZSI6InBsYXllciIsImlhdCI6MTc0MzEyMTE5MiwiZXhwIjoxNzQzMjA3NTkyfQ.fyx8kEIH86UNY2hxXKz6hlawLtEtJ0L6qM2II8vIk04","user":{"id":26,"username":"jeffo","email":"jeffo@jeffo.com","role":"player"}}
+[2025-03-27 21:19:52] [info] Login bem-sucedido para usuário: jeffo
+[2025-03-27 21:19:52] [info] Aplicação iniciada - desenvolvimento - API: http://localhost:34567/api
+[2025-03-27 21:19:52] [debug] Enviando requisição GET para: http://localhost:34567/api/status
+[2025-03-27 21:19:52] [debug] Cabeçalhos: ["Accept: application\/json","Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI2LCJ1c2VybmFtZSI6ImplZmZvIiwicm9sZSI6InBsYXllciIsImlhdCI6MTc0MzEyMTE5MiwiZXhwIjoxNzQzMjA3NTkyfQ.fyx8kEIH86UNY2hxXKz6hlawLtEtJ0L6qM2II8vIk04"]
+[2025-03-27 21:19:52] [debug] Resposta recebida (HTTP 200): {"success":true,"status":"online","timestamp":"2025-03-28T00:19:52.690Z","version":"1.0.0","onlinePlayers":0,"database":"connected"}
+[2025-03-27 21:19:52] [info] Conexão com a API estabelecida: http://localhost:34567/api
+[2025-03-27 21:19:52] [info] Status do banco de dados: connected
+[2025-03-27 21:19:52] [info] Jogadores online: 0
+[2025-03-27 21:19:52] [info] Acesso à página da conta pelo usuário: jeffo
+[2025-03-27 21:19:52] [debug] Tentando obter personagens do usuário ID: 26
+[2025-03-27 21:19:52] [debug] Enviando requisição GET para: http://localhost:34567/api/characters
+[2025-03-27 21:19:52] [debug] Cabeçalhos: ["Accept: application\/json","Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI2LCJ1c2VybmFtZSI6ImplZmZvIiwicm9sZSI6InBsYXllciIsImlhdCI6MTc0MzEyMTE5MiwiZXhwIjoxNzQzMjA3NTkyfQ.fyx8kEIH86UNY2hxXKz6hlawLtEtJ0L6qM2II8vIk04"]
+[2025-03-27 21:19:52] [debug] Resposta recebida (HTTP 200): {"success":true,"data":[]}
+[2025-03-27 21:19:52] [debug] Obtidos 0 personagens
+[2025-03-27 21:26:04] [info] Aplicação iniciada - desenvolvimento - API: http://localhost:34567/api
+[2025-03-27 21:26:04] [debug] Enviando requisição GET para: http://localhost:34567/api/status
+[2025-03-27 21:26:04] [debug] Cabeçalhos: ["Accept: application\/json","Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI2LCJ1c2VybmFtZSI6ImplZmZvIiwicm9sZSI6InBsYXllciIsImlhdCI6MTc0MzEyMTE5MiwiZXhwIjoxNzQzMjA3NTkyfQ.fyx8kEIH86UNY2hxXKz6hlawLtEtJ0L6qM2II8vIk04"]
+[2025-03-27 21:26:04] [debug] Resposta recebida (HTTP 200): {"success":true,"status":"online","timestamp":"2025-03-28T00:26:04.324Z","version":"1.0.0","onlinePlayers":0,"database":"connected"}
+[2025-03-27 21:26:04] [info] Conexão com a API estabelecida: http://localhost:34567/api
+[2025-03-27 21:26:04] [info] Status do banco de dados: connected
+[2025-03-27 21:26:04] [info] Jogadores online: 0
+[2025-03-27 21:26:04] [info] Acesso à página da conta pelo usuário: jeffo
+[2025-03-27 21:26:04] [debug] Tentando obter personagens do usuário ID: 26
+[2025-03-27 21:26:04] [debug] Enviando requisição GET para: http://localhost:34567/api/characters
+[2025-03-27 21:26:04] [debug] Cabeçalhos: ["Accept: application\/json","Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI2LCJ1c2VybmFtZSI6ImplZmZvIiwicm9sZSI6InBsYXllciIsImlhdCI6MTc0MzEyMTE5MiwiZXhwIjoxNzQzMjA3NTkyfQ.fyx8kEIH86UNY2hxXKz6hlawLtEtJ0L6qM2II8vIk04"]
+[2025-03-27 21:26:04] [debug] Resposta recebida (HTTP 200): {"success":true,"data":[]}
+[2025-03-27 21:26:04] [debug] Obtidos 0 personagens
+[2025-03-27 21:26:09] [info] Aplicação iniciada - desenvolvimento - API: http://localhost:34567/api
+[2025-03-27 21:26:09] [debug] Enviando requisição GET para: http://localhost:34567/api/status
+[2025-03-27 21:26:09] [debug] Cabeçalhos: ["Accept: application\/json","Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI2LCJ1c2VybmFtZSI6ImplZmZvIiwicm9sZSI6InBsYXllciIsImlhdCI6MTc0MzEyMTE5MiwiZXhwIjoxNzQzMjA3NTkyfQ.fyx8kEIH86UNY2hxXKz6hlawLtEtJ0L6qM2II8vIk04"]
+[2025-03-27 21:26:09] [debug] Resposta recebida (HTTP 200): {"success":true,"status":"online","timestamp":"2025-03-28T00:26:09.806Z","version":"1.0.0","onlinePlayers":0,"database":"connected"}
+[2025-03-27 21:26:09] [info] Conexão com a API estabelecida: http://localhost:34567/api
+[2025-03-27 21:26:09] [info] Status do banco de dados: connected
+[2025-03-27 21:26:09] [info] Jogadores online: 0
+[2025-03-27 21:26:09] [info] Logout iniciado para o usuário: jeffo
+[2025-03-27 21:26:09] [info] Sessão destruída para o usuário: jeffo
+[2025-03-27 21:26:09] [info] Aplicação iniciada - desenvolvimento - API: http://localhost:34567/api
+[2025-03-27 21:26:09] [debug] Enviando requisição GET para: http://localhost:34567/api/status
+[2025-03-27 21:26:09] [debug] Cabeçalhos: ["Accept: application\/json"]
+[2025-03-27 21:26:09] [debug] Resposta recebida (HTTP 200): {"success":true,"status":"online","timestamp":"2025-03-28T00:26:09.821Z","version":"1.0.0","onlinePlayers":0,"database":"connected"}
+[2025-03-27 21:26:09] [info] Conexão com a API estabelecida: http://localhost:34567/api
+[2025-03-27 21:26:09] [info] Status do banco de dados: connected
+[2025-03-27 21:26:09] [info] Jogadores online: 0
+[2025-03-27 21:26:16] [info] Aplicação iniciada - desenvolvimento - API: http://localhost:34567/api
+[2025-03-27 21:26:16] [debug] Enviando requisição GET para: http://localhost:34567/api/status
+[2025-03-27 21:26:16] [debug] Cabeçalhos: ["Accept: application\/json"]
+[2025-03-27 21:26:16] [debug] Resposta recebida (HTTP 200): {"success":true,"status":"online","timestamp":"2025-03-28T00:26:16.962Z","version":"1.0.0","onlinePlayers":0,"database":"connected"}
+[2025-03-27 21:26:16] [info] Conexão com a API estabelecida: http://localhost:34567/api
+[2025-03-27 21:26:16] [info] Status do banco de dados: connected
+[2025-03-27 21:26:16] [info] Jogadores online: 0
+[2025-03-27 21:26:16] [debug] Tentativa de login iniciada
+[2025-03-27 21:26:16] [info] Tentativa de login para usuário: jeffo
+[2025-03-27 21:26:16] [debug] Enviando requisição POST para: http://localhost:34567/api/auth/login
+[2025-03-27 21:26:16] [debug] Dados: {"username":"jeffo","password":"!Jeffo123"}
+[2025-03-27 21:26:16] [debug] Cabeçalhos: ["Content-Type: application\/json","Accept: application\/json"]
+[2025-03-27 21:26:17] [debug] Resposta recebida (HTTP 200): {"success":true,"message":"Login realizado com sucesso","accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI2LCJ1c2VybmFtZSI6ImplZmZvIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzQzMTIxNTc3LCJleHAiOjE3NDMyMDc5Nzd9.Wdw8CBtj_-Q76SU16-2L9i4JjPJCwCywOTKG4rd-nOY","user":{"id":26,"username":"jeffo","email":"jeffo@jeffo.com","role":"admin"}}
+[2025-03-27 21:26:17] [info] Login bem-sucedido para usuário: jeffo
+[2025-03-27 21:26:17] [info] Aplicação iniciada - desenvolvimento - API: http://localhost:34567/api
+[2025-03-27 21:26:17] [debug] Enviando requisição GET para: http://localhost:34567/api/status
+[2025-03-27 21:26:17] [debug] Cabeçalhos: ["Accept: application\/json","Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI2LCJ1c2VybmFtZSI6ImplZmZvIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzQzMTIxNTc3LCJleHAiOjE3NDMyMDc5Nzd9.Wdw8CBtj_-Q76SU16-2L9i4JjPJCwCywOTKG4rd-nOY"]
+[2025-03-27 21:26:17] [debug] Resposta recebida (HTTP 200): {"success":true,"status":"online","timestamp":"2025-03-28T00:26:17.068Z","version":"1.0.0","onlinePlayers":0,"database":"connected"}
+[2025-03-27 21:26:17] [info] Conexão com a API estabelecida: http://localhost:34567/api
+[2025-03-27 21:26:17] [info] Status do banco de dados: connected
+[2025-03-27 21:26:17] [info] Jogadores online: 0
+[2025-03-27 21:26:17] [info] Acesso à página da conta pelo usuário: jeffo
+[2025-03-27 21:26:17] [debug] Tentando obter personagens do usuário ID: 26
+[2025-03-27 21:26:17] [debug] Enviando requisição GET para: http://localhost:34567/api/characters
+[2025-03-27 21:26:17] [debug] Cabeçalhos: ["Accept: application\/json","Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI2LCJ1c2VybmFtZSI6ImplZmZvIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzQzMTIxNTc3LCJleHAiOjE3NDMyMDc5Nzd9.Wdw8CBtj_-Q76SU16-2L9i4JjPJCwCywOTKG4rd-nOY"]
+[2025-03-27 21:26:17] [debug] Resposta recebida (HTTP 200): {"success":true,"data":[]}
+[2025-03-27 21:26:17] [debug] Obtidos 0 personagens
+[2025-03-27 21:26:18] [info] Aplicação iniciada - desenvolvimento - API: http://localhost:34567/api
+[2025-03-27 21:26:18] [debug] Enviando requisição GET para: http://localhost:34567/api/status
+[2025-03-27 21:26:18] [debug] Cabeçalhos: ["Accept: application\/json","Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI2LCJ1c2VybmFtZSI6ImplZmZvIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzQzMTIxNTc3LCJleHAiOjE3NDMyMDc5Nzd9.Wdw8CBtj_-Q76SU16-2L9i4JjPJCwCywOTKG4rd-nOY"]
+[2025-03-27 21:26:18] [debug] Resposta recebida (HTTP 200): {"success":true,"status":"online","timestamp":"2025-03-28T00:26:18.713Z","version":"1.0.0","onlinePlayers":0,"database":"connected"}
+[2025-03-27 21:26:18] [info] Conexão com a API estabelecida: http://localhost:34567/api
+[2025-03-27 21:26:18] [info] Status do banco de dados: connected
+[2025-03-27 21:26:18] [info] Jogadores online: 0
+[2025-03-27 21:26:18] [info] Aplicação iniciada - desenvolvimento - API: http://localhost:34567/api
+[2025-03-27 21:26:18] [debug] Enviando requisição GET para: http://localhost:34567/api/status
+[2025-03-27 21:26:18] [debug] Cabeçalhos: ["Accept: application\/json","Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI2LCJ1c2VybmFtZSI6ImplZmZvIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzQzMTIxNTc3LCJleHAiOjE3NDMyMDc5Nzd9.Wdw8CBtj_-Q76SU16-2L9i4JjPJCwCywOTKG4rd-nOY"]
+[2025-03-27 21:26:18] [debug] Resposta recebida (HTTP 200): {"success":true,"status":"online","timestamp":"2025-03-28T00:26:18.951Z","version":"1.0.0","onlinePlayers":0,"database":"connected"}
+[2025-03-27 21:26:18] [info] Conexão com a API estabelecida: http://localhost:34567/api
+[2025-03-27 21:26:18] [info] Status do banco de dados: connected
+[2025-03-27 21:26:18] [info] Jogadores online: 0
+[2025-03-27 22:51:11] [info] Aplicação iniciada - desenvolvimento - API: http://localhost:34567/api
+[2025-03-27 22:51:11] [debug] Enviando requisição GET para: http://localhost:34567/api/status
+[2025-03-27 22:51:11] [debug] Cabeçalhos: ["Accept: application\/json","Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI2LCJ1c2VybmFtZSI6ImplZmZvIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzQzMTIxNTc3LCJleHAiOjE3NDMyMDc5Nzd9.Wdw8CBtj_-Q76SU16-2L9i4JjPJCwCywOTKG4rd-nOY"]
+[2025-03-27 22:51:11] [debug] Resposta recebida (HTTP 200): {"success":true,"status":"online","timestamp":"2025-03-28T01:51:11.584Z","version":"1.0.0","onlinePlayers":0,"database":"connected"}
+[2025-03-27 22:51:11] [info] Conexão com a API estabelecida: http://localhost:34567/api
+[2025-03-27 22:51:11] [info] Status do banco de dados: connected
+[2025-03-27 22:51:11] [info] Jogadores online: 0
+[2025-03-27 22:51:11] [info] Acesso à página inicial. Usuário autenticado: Sim
+[2025-03-27 22:51:11] [info] Acessando página inicial
+[2025-03-27 22:51:11] [debug] Carregando lista de jogadores
+[2025-03-27 22:51:11] [debug] Enviando requisição GET para: http://localhost:34567/api/status
+[2025-03-27 22:51:11] [debug] Cabeçalhos: ["Accept: application\/json","Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI2LCJ1c2VybmFtZSI6ImplZmZvIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzQzMTIxNTc3LCJleHAiOjE3NDMyMDc5Nzd9.Wdw8CBtj_-Q76SU16-2L9i4JjPJCwCywOTKG4rd-nOY"]
+[2025-03-27 22:51:11] [debug] Resposta recebida (HTTP 200): {"success":true,"status":"online","timestamp":"2025-03-28T01:51:11.593Z","version":"1.0.0","onlinePlayers":0,"database":"connected"}

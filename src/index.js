@@ -8,7 +8,11 @@ const { testConnection, pool } = require('./config/database');
 const { initDb } = require('./config/dbInit');
 const { logger, httpLogger } = require('./config/logger');
 const { errorHandler, notFound } = require('./middlewares/error.middleware');
-const { corsOptions, securityHeaders, globalRateLimiter } = require('./middlewares/security.middleware');
+const {
+  corsOptions,
+  securityHeaders,
+  globalRateLimiter,
+} = require('./middlewares/security.middleware');
 const { sanitizeInput } = require('./middlewares/validation.middleware');
 const authRoutes = require('./routes/auth.routes');
 const characterRoutes = require('./routes/character.routes');
@@ -41,8 +45,8 @@ const io = new Server(server, {
   cors: {
     origin: process.env.CORS_ORIGIN || '*',
     methods: ['GET', 'POST'],
-    credentials: true
-  }
+    credentials: true,
+  },
 });
 console.log('Socket.IO configurado');
 logger.info('Socket.IO configurado');
@@ -71,11 +75,11 @@ const availableEndpoints = [
   { method: 'POST', path: '/api/characters', description: 'Criar novo personagem' },
   { method: 'PUT', path: '/api/characters/:id', description: 'Atualizar personagem' },
   { method: 'DELETE', path: '/api/characters/:id', description: 'Excluir personagem' },
-  { method: 'GET', path: '/api/status', description: 'Verificar status do servidor' }
+  { method: 'GET', path: '/api/status', description: 'Verificar status do servidor' },
 ];
 
 console.log('Endpoints disponíveis:');
-availableEndpoints.forEach(endpoint => {
+availableEndpoints.forEach((endpoint) => {
   console.log(`${endpoint.method} ${endpoint.path} - ${endpoint.description}`);
 });
 
@@ -93,7 +97,7 @@ logger.info('Rotas de personagens configuradas (protegidas por autenticação)')
 app.get('/api/endpoints', (req, res) => {
   res.json({
     success: true,
-    endpoints: availableEndpoints
+    endpoints: availableEndpoints,
   });
 });
 
@@ -105,8 +109,8 @@ app.get('/api/status', (req, res) => {
     version: process.env.npm_package_version || '1.0.0',
     database: {
       host: process.env.DB_HOST,
-      name: process.env.DB_NAME
-    }
+      name: process.env.DB_NAME,
+    },
   });
 });
 
@@ -120,7 +124,7 @@ app.use(errorHandler);
 io.on('connection', (socket) => {
   logger.info(`Nova conexão de socket: ${socket.id}`);
   console.log(`Nova conexão de socket: ${socket.id}`);
-  
+
   socket.on('disconnect', () => {
     logger.info(`Desconexão de socket: ${socket.id}`);
     console.log(`Desconexão de socket: ${socket.id}`);
@@ -143,26 +147,26 @@ const startServer = async () => {
   try {
     console.log('Iniciando servidor...');
     logger.info('Iniciando servidor...');
-    
+
     // Testar conexão com o banco de dados
     console.log('Testando conexão com o banco de dados...');
     await testConnection();
     console.log('Conexão com o banco de dados estabelecida com sucesso');
-    
+
     // Inicializar banco de dados (criar tabelas se não existirem)
     console.log('Inicializando banco de dados...');
     await initDb();
     console.log('Banco de dados inicializado com sucesso');
-    
+
     // Verificar tabelas existentes
     console.log('Verificando tabelas existentes...');
     const [tables] = await pool.query('SHOW TABLES');
     console.log('Tabelas encontradas no banco de dados:');
-    tables.forEach(table => {
+    tables.forEach((table) => {
       const tableName = Object.values(table)[0];
       console.log(`- ${tableName}`);
     });
-    
+
     // Iniciar o servidor
     server.listen(PORT, () => {
       console.log(`=== SERVIDOR UMBRAETERNUM INICIADO ===`);
@@ -172,7 +176,7 @@ const startServer = async () => {
       console.log(`Banco de dados: ${process.env.DB_NAME} em ${process.env.DB_HOST}`);
       console.log(`Ambiente: ${process.env.NODE_ENV}`);
       console.log(`========================================`);
-      
+
       logger.info(`Servidor rodando na porta ${PORT}`);
       logger.info(`API: http://localhost:${PORT}/api`);
       logger.info(`Socket.IO: ws://localhost:${PORT}`);
@@ -197,4 +201,4 @@ process.on('unhandledRejection', (reason, promise) => {
 });
 
 // Iniciar o servidor
-startServer(); 
+startServer();

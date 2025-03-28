@@ -25,8 +25,8 @@ const dbConfig = {
   queueLimit: 0,
   // Usar SSL/TLS para conexão segura quando em produção
   ...(process.env.NODE_ENV === 'production' && {
-    ssl: { rejectUnauthorized: true }
-  })
+    ssl: { rejectUnauthorized: true },
+  }),
 };
 
 console.log(`Configuração do banco de dados carregada:
@@ -52,12 +52,14 @@ const testConnection = async () => {
   try {
     console.log('Testando conexão com o banco de dados...');
     const connection = await pool.getConnection();
-    console.log(`Conexão com o banco de dados estabelecida com sucesso: ${dbConfig.host}:${dbConfig.port}/${dbConfig.database}`);
-    
+    console.log(
+      `Conexão com o banco de dados estabelecida com sucesso: ${dbConfig.host}:${dbConfig.port}/${dbConfig.database}`
+    );
+
     // Verificar se o banco de dados existe
     const [databases] = await connection.query('SHOW DATABASES');
-    const databaseExists = databases.some(db => Object.values(db)[0] === dbConfig.database);
-    
+    const databaseExists = databases.some((db) => Object.values(db)[0] === dbConfig.database);
+
     if (!databaseExists) {
       console.log(`Banco de dados '${dbConfig.database}' não encontrado, criando...`);
       await connection.query(`CREATE DATABASE IF NOT EXISTS ${dbConfig.database}`);
@@ -65,11 +67,11 @@ const testConnection = async () => {
     } else {
       console.log(`Banco de dados '${dbConfig.database}' encontrado`);
     }
-    
+
     // Selecionar o banco de dados
     await connection.query(`USE ${dbConfig.database}`);
     console.log(`Usando banco de dados: ${dbConfig.database}`);
-    
+
     // Verificar se a tabela de usuários existe
     try {
       const [tables] = await connection.query('SHOW TABLES LIKE "users"');
@@ -95,7 +97,7 @@ const testConnection = async () => {
     } catch (tableError) {
       console.error('Erro ao verificar tabela de usuários:', tableError.message);
     }
-    
+
     // Verificar se a tabela de tokens de atualização existe
     try {
       const [tables] = await connection.query('SHOW TABLES LIKE "refresh_tokens"');
@@ -119,38 +121,42 @@ const testConnection = async () => {
     } catch (tableError) {
       console.error('Erro ao verificar tabela de tokens de atualização:', tableError.message);
     }
-    
+
     connection.release();
     return true;
   } catch (error) {
     console.error('Erro ao conectar com o banco de dados:', error.message);
-    
+
     // Verificar erros específicos
     if (error.code === 'ER_ACCESS_DENIED_ERROR') {
       console.error('Acesso negado. Verifique o usuário e senha do banco de dados');
     } else if (error.code === 'ECONNREFUSED') {
-      console.error(`Não foi possível conectar ao servidor MySQL em ${dbConfig.host}:${dbConfig.port}. Verifique se o servidor está em execução.`);
+      console.error(
+        `Não foi possível conectar ao servidor MySQL em ${dbConfig.host}:${dbConfig.port}. Verifique se o servidor está em execução.`
+      );
     } else if (error.code === 'ER_BAD_DB_ERROR') {
-      console.error(`Banco de dados '${dbConfig.database}' não existe. Será criado automaticamente.`);
+      console.error(
+        `Banco de dados '${dbConfig.database}' não existe. Será criado automaticamente.`
+      );
       try {
         const tempConnection = await mysql.createConnection({
           host: dbConfig.host,
           port: dbConfig.port,
           user: dbConfig.user,
-          password: dbConfig.password
+          password: dbConfig.password,
         });
-        
+
         await tempConnection.query(`CREATE DATABASE IF NOT EXISTS ${dbConfig.database}`);
         console.log(`Banco de dados '${dbConfig.database}' criado com sucesso`);
         await tempConnection.end();
-        
+
         // Testar a conexão novamente
         return await testConnection();
       } catch (createError) {
         console.error('Erro ao criar banco de dados:', createError.message);
       }
     }
-    
+
     throw error;
   }
 };
@@ -166,9 +172,9 @@ const executeQuery = async (sql, params = []) => {
   }
 };
 
-module.exports = { 
-  pool, 
+module.exports = {
+  pool,
   testConnection,
   executeQuery,
-  dbConfig
-}; 
+  dbConfig,
+};

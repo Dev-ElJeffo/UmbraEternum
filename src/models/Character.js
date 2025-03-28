@@ -9,7 +9,7 @@ const dbConfig = {
   port: parseInt(process.env.DB_PORT || '3306', 10),
   user: process.env.DB_USER || 'root',
   password: process.env.DB_PASSWORD || '',
-  database: process.env.DB_NAME || 'umbraeternum'
+  database: process.env.DB_NAME || 'umbraeternum',
 };
 
 let dbPool;
@@ -20,7 +20,7 @@ let dbPool;
 async function initDatabaseConnection() {
   if (!dbPool) {
     dbPool = mysql.createPool(dbConfig);
-    
+
     // Verificar se a tabela characters existe
     const connection = await dbPool.getConnection();
     try {
@@ -106,15 +106,14 @@ class Character {
   static async findById(id) {
     try {
       const pool = await initDatabaseConnection();
-      const [rows] = await pool.query(
-        'SELECT * FROM characters WHERE id = ? AND active = TRUE',
-        [id]
-      );
-      
+      const [rows] = await pool.query('SELECT * FROM characters WHERE id = ? AND active = TRUE', [
+        id,
+      ]);
+
       if (rows.length === 0) {
         return null;
       }
-      
+
       return new Character(rows[0]);
     } catch (error) {
       console.error('Erro ao buscar personagem por ID:', error);
@@ -134,8 +133,8 @@ class Character {
         'SELECT * FROM characters WHERE user_id = ? AND active = TRUE ORDER BY level DESC, name ASC',
         [userId]
       );
-      
-      return rows.map(row => new Character(row));
+
+      return rows.map((row) => new Character(row));
     } catch (error) {
       console.error('Erro ao buscar personagens do usuário:', error);
       throw error;
@@ -150,11 +149,11 @@ class Character {
   static async create(data) {
     try {
       const pool = await initDatabaseConnection();
-      
+
       // Calcular HP e Mana com base nas estatísticas
       const maxHp = (data.constitution || 10) * 10;
       const maxMana = (data.intelligence || 10) * 5;
-      
+
       const [result] = await pool.query(
         `INSERT INTO characters (
           user_id, name, class, strength, dexterity, constitution, 
@@ -175,10 +174,10 @@ class Character {
           maxHp,
           maxMana,
           maxMana,
-          data.backstory || ''
+          data.backstory || '',
         ]
       );
-      
+
       // Buscar o personagem criado
       return this.findById(result.insertId);
     } catch (error) {
@@ -195,7 +194,7 @@ class Character {
   async update(updates) {
     try {
       const pool = await initDatabaseConnection();
-      
+
       // Converter camelCase para snake_case para o banco de dados
       const dbUpdates = {};
       if (updates.name) dbUpdates.name = updates.name;
@@ -218,23 +217,22 @@ class Character {
       if (updates.positionZ) dbUpdates.position_z = updates.positionZ;
       if (updates.backstory) dbUpdates.backstory = updates.backstory;
       if (updates.active !== undefined) dbUpdates.active = updates.active;
-      
+
       // Construir a query de atualização
       if (Object.keys(dbUpdates).length === 0) {
         return this; // Nada a atualizar
       }
-      
-      const setClauses = Object.keys(dbUpdates).map(key => `${key} = ?`).join(', ');
+
+      const setClauses = Object.keys(dbUpdates)
+        .map((key) => `${key} = ?`)
+        .join(', ');
       const values = [...Object.values(dbUpdates), this.id];
-      
-      await pool.query(
-        `UPDATE characters SET ${setClauses} WHERE id = ?`,
-        values
-      );
-      
+
+      await pool.query(`UPDATE characters SET ${setClauses} WHERE id = ?`, values);
+
       // Atualizar o objeto atual
       Object.assign(this, updates);
-      
+
       return this;
     } catch (error) {
       console.error('Erro ao atualizar personagem:', error);
@@ -249,10 +247,7 @@ class Character {
   async deactivate() {
     try {
       const pool = await initDatabaseConnection();
-      await pool.query(
-        'UPDATE characters SET active = FALSE WHERE id = ?',
-        [this.id]
-      );
+      await pool.query('UPDATE characters SET active = FALSE WHERE id = ?', [this.id]);
       this.active = false;
     } catch (error) {
       console.error('Erro ao desativar personagem:', error);
@@ -261,4 +256,4 @@ class Character {
   }
 }
 
-module.exports = Character; 
+module.exports = Character;

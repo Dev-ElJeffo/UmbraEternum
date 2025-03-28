@@ -9,7 +9,12 @@ import { testConnection } from './config/database';
 import initializeDatabase from './config/dbInit';
 import logger from './config/logger';
 import { errorHandler, notFoundHandler } from './middlewares/error.middleware';
-import { corsConfig, configureHelmet, securityHeaders, apiRateLimiter } from './middlewares/security.middleware';
+import {
+  corsConfig,
+  configureHelmet,
+  securityHeaders,
+  apiRateLimiter,
+} from './middlewares/security.middleware';
 import { sanitizeBody } from './middlewares/validation.middleware';
 import authRoutes from './routes/auth.routes';
 import characterRoutes from './routes/character.routes';
@@ -33,8 +38,8 @@ const io = new Server(server, {
   cors: {
     origin: process.env.CORS_ORIGIN || '*',
     methods: ['GET', 'POST'],
-    credentials: true
-  }
+    credentials: true,
+  },
 });
 
 // Middleware de segurança e configuração
@@ -57,7 +62,7 @@ app.get('/api/status', (req, res) => {
   res.json({
     status: 'online',
     timestamp: new Date().toISOString(),
-    version: process.env.npm_package_version || '1.0.0'
+    version: process.env.npm_package_version || '1.0.0',
   });
 });
 
@@ -70,7 +75,7 @@ app.use(errorHandler);
 // Configuração para Socket.IO
 io.on('connection', (socket) => {
   logger.info(`Nova conexão de socket: ${socket.id}`);
-  
+
   socket.on('disconnect', () => {
     logger.info(`Desconexão de socket: ${socket.id}`);
   });
@@ -83,10 +88,10 @@ const startServer = async () => {
   try {
     // Testar conexão com o banco de dados
     await testConnection();
-    
+
     // Inicializar banco de dados (criar tabelas se não existirem)
     await initializeDatabase();
-    
+
     // Iniciar o servidor
     server.listen(PORT, () => {
       logger.info(`Servidor rodando na porta ${PORT}`);
@@ -110,4 +115,4 @@ process.on('unhandledRejection', (reason, promise) => {
 });
 
 // Iniciar o servidor
-startServer(); 
+startServer();

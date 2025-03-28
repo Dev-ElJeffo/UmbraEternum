@@ -15,10 +15,10 @@ export const loginRateLimiter = rateLimit({
     res.status(429).json({
       error: {
         message: 'Muitas tentativas de login. Tente novamente após 15 minutos.',
-        code: 'RATE_LIMIT_EXCEEDED'
-      }
+        code: 'RATE_LIMIT_EXCEEDED',
+      },
     });
-  }
+  },
 });
 
 // Limites para API geral
@@ -32,10 +32,10 @@ export const apiRateLimiter = rateLimit({
     res.status(429).json({
       error: {
         message: 'Muitas requisições. Tente novamente em alguns instantes.',
-        code: 'RATE_LIMIT_EXCEEDED'
-      }
+        code: 'RATE_LIMIT_EXCEEDED',
+      },
     });
-  }
+  },
 });
 
 // Configura o CORS
@@ -45,7 +45,7 @@ export const corsConfig = (allowedOrigins: string | string[]) => {
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
-    maxAge: 86400 // 24 horas
+    maxAge: 86400, // 24 horas
   });
 };
 
@@ -55,7 +55,7 @@ export const configureHelmet = () => {
     contentSecurityPolicy: process.env.NODE_ENV === 'production',
     xssFilter: true,
     noSniff: true,
-    hidePoweredBy: true
+    hidePoweredBy: true,
   });
 };
 
@@ -63,14 +63,14 @@ export const configureHelmet = () => {
 export const securityHeaders = (req: Request, res: Response, next: NextFunction): void => {
   // Desabilitar o cache para APIs
   res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
-  
+
   // Prevenir clickjacking
   res.setHeader('X-Frame-Options', 'DENY');
-  
+
   // Modo estrito de transporte HTTP
   if (process.env.NODE_ENV === 'production') {
     res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
   }
-  
+
   next();
-}; 
+};

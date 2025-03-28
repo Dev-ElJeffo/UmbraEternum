@@ -15,28 +15,27 @@ const logFormat = printf(({ level, message, timestamp }) => {
 // Configuração do logger
 const logger = winston.createLogger({
   level: process.env.NODE_ENV === 'production' ? 'info' : 'debug',
-  format: combine(
-    timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
-    logFormat
-  ),
+  format: combine(timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }), logFormat),
   defaultMeta: { service: 'umbraeternum-api' },
   transports: [
     // Log de erros em arquivo
-    new winston.transports.File({ 
-      filename: path.join(logDir, 'error.log'), 
-      level: 'error' 
+    new winston.transports.File({
+      filename: path.join(logDir, 'error.log'),
+      level: 'error',
     }),
     // Log de todas as informações
-    new winston.transports.File({ 
-      filename: path.join(logDir, 'combined.log') 
+    new winston.transports.File({
+      filename: path.join(logDir, 'combined.log'),
     }),
     // Em desenvolvimento, mostra no console também
-    ...(process.env.NODE_ENV !== 'production' 
-      ? [new winston.transports.Console({
-          format: combine(colorize(), logFormat)
-        })]
-      : [])
-  ]
+    ...(process.env.NODE_ENV !== 'production'
+      ? [
+          new winston.transports.Console({
+            format: combine(colorize(), logFormat),
+          }),
+        ]
+      : []),
+  ],
 });
 
 // Exporta um wrapper para facilitar o uso
@@ -59,5 +58,5 @@ export default {
   },
   http: (message: string): void => {
     logger.http(message);
-  }
-}; 
+  },
+};

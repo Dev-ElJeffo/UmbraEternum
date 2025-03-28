@@ -26,8 +26,8 @@ const dbConfig: DBConfig = {
   queueLimit: 0,
   // Usar SSL/TLS para conexão segura quando em produção
   ...(process.env.NODE_ENV === 'production' && {
-    ssl: { rejectUnauthorized: true }
-  })
+    ssl: { rejectUnauthorized: true },
+  }),
 };
 
 // Criar pool de conexões
@@ -46,4 +46,4 @@ const testConnection = async (): Promise<void> => {
 };
 
 export { pool, testConnection };
-export default dbConfig; 
+export default dbConfig;

@@ -20,7 +20,7 @@ const securityHeaders = helmet({
   },
   xssFilter: true,
   noSniff: true,
-  referrerPolicy: { policy: 'same-origin' }
+  referrerPolicy: { policy: 'same-origin' },
 });
 
 // Configuração do CORS
@@ -29,7 +29,7 @@ const corsOptions = {
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
-  maxAge: 86400
+  maxAge: 86400,
 };
 
 // Rate limiter para login
@@ -42,9 +42,9 @@ const loginRateLimiter = rateLimit({
     logger.warn(`Muitas tentativas de login do IP ${req.ip}`);
     res.status(429).json({
       success: false,
-      message: 'Muitas tentativas de login. Tente novamente mais tarde.'
+      message: 'Muitas tentativas de login. Tente novamente mais tarde.',
     });
-  }
+  },
 });
 
 // Rate limiter global
@@ -57,14 +57,14 @@ const globalRateLimiter = rateLimit({
     logger.warn(`Rate limit excedido para o IP ${req.ip}`);
     res.status(429).json({
       success: false,
-      message: 'Muitas solicitações, tente novamente mais tarde.'
+      message: 'Muitas solicitações, tente novamente mais tarde.',
     });
-  }
+  },
 });
 
 module.exports = {
   securityHeaders,
   corsOptions,
   loginRateLimiter,
-  globalRateLimiter
-}; 
+  globalRateLimiter,
+};

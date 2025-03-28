@@ -10,8 +10,8 @@ export function initializeIO(server: HttpServer) {
     cors: {
       origin: process.env.CORS_ORIGIN || '*',
       methods: ['GET', 'POST'],
-      credentials: true
-    }
+      credentials: true,
+    },
   });
 
   return io;
@@ -44,4 +44,4 @@ export function broadcastPlayerCount() {
   if (io) {
     io.emit('players_count', onlinePlayers);
   }
-} 
+}

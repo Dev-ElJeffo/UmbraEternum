@@ -7,21 +7,21 @@ const { logger } = require('../config/logger');
  */
 const validate = (validations) => {
   return async (req, res, next) => {
-    await Promise.all(validations.map(validation => validation.run(req)));
+    await Promise.all(validations.map((validation) => validation.run(req)));
 
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      const errorMessages = errors.array().map(error => ({
+      const errorMessages = errors.array().map((error) => ({
         field: error.path,
-        message: error.msg
+        message: error.msg,
       }));
-      
+
       logger.warn('Validação falhou', { errors: errorMessages, body: req.body });
-      
+
       return res.status(400).json({
         success: false,
         message: 'Erro de validação',
-        errors: errorMessages
+        errors: errorMessages,
       });
     }
     next();
@@ -37,34 +37,34 @@ const sanitizeInput = (req, res, next) => {
     if (typeof str !== 'string') return str;
     return str.replace(/<[^>]*>/g, '');
   };
-  
+
   // Sanitizar corpo da requisição
   if (req.body) {
-    Object.keys(req.body).forEach(key => {
+    Object.keys(req.body).forEach((key) => {
       if (typeof req.body[key] === 'string') {
         req.body[key] = sanitizeString(req.body[key]);
       }
     });
   }
-  
+
   // Sanitizar parâmetros da URL
   if (req.params) {
-    Object.keys(req.params).forEach(key => {
+    Object.keys(req.params).forEach((key) => {
       if (typeof req.params[key] === 'string') {
         req.params[key] = sanitizeString(req.params[key]);
       }
     });
   }
-  
+
   // Sanitizar query string
   if (req.query) {
-    Object.keys(req.query).forEach(key => {
+    Object.keys(req.query).forEach((key) => {
       if (typeof req.query[key] === 'string') {
         req.query[key] = sanitizeString(req.query[key]);
       }
     });
   }
-  
+
   next();
 };
 
@@ -80,5 +80,5 @@ const sanitizeBody = (req, res, next) => {
 module.exports = {
   validate,
   sanitizeInput,
-  sanitizeBody
-}; 
+  sanitizeBody,
+};

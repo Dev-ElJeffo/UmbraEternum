@@ -18,16 +18,13 @@ class User {
   static async findById(id) {
     try {
       logger.debug(`Buscando usuário com ID: ${id}`);
-      const [rows] = await pool.query(
-        'SELECT * FROM users WHERE id = ? AND active = true',
-        [id]
-      );
-      
+      const [rows] = await pool.query('SELECT * FROM users WHERE id = ? AND active = true', [id]);
+
       if (rows.length === 0) {
         logger.debug(`Nenhum usuário encontrado com ID: ${id}`);
         return null;
       }
-      
+
       logger.debug(`Usuário encontrado: ${rows[0].username}`);
       return new User(rows[0]);
     } catch (error) {
@@ -40,16 +37,13 @@ class User {
   static async findByUsername(username) {
     try {
       logger.debug(`Buscando usuário com nome: ${username}`);
-      const [rows] = await pool.query(
-        'SELECT * FROM users WHERE username = ?',
-        [username]
-      );
-      
+      const [rows] = await pool.query('SELECT * FROM users WHERE username = ?', [username]);
+
       if (rows.length === 0) {
         logger.debug(`Nenhum usuário encontrado com nome: ${username}`);
         return null;
       }
-      
+
       logger.debug(`Usuário encontrado: ${rows[0].username} (ID: ${rows[0].id})`);
       return new User(rows[0]);
     } catch (error) {
@@ -62,16 +56,13 @@ class User {
   static async findByEmail(email) {
     try {
       logger.debug(`Buscando usuário com email: ${email}`);
-      const [rows] = await pool.query(
-        'SELECT * FROM users WHERE email = ?',
-        [email]
-      );
-      
+      const [rows] = await pool.query('SELECT * FROM users WHERE email = ?', [email]);
+
       if (rows.length === 0) {
         logger.debug(`Nenhum usuário encontrado com email: ${email}`);
         return null;
       }
-      
+
       logger.debug(`Usuário encontrado: ${rows[0].username} (ID: ${rows[0].id})`);
       return new User(rows[0]);
     } catch (error) {
@@ -97,7 +88,7 @@ class User {
   static async create(userData) {
     try {
       logger.info(`Tentando criar novo usuário: ${userData.username}, email: ${userData.email}`);
-      
+
       // Verificar se a tabela users existe antes de continuar
       try {
         const [tables] = await pool.query('SHOW TABLES LIKE "users"');
@@ -118,34 +109,36 @@ class User {
           logger.info('Tabela de usuários criada com sucesso');
         }
       } catch (tableError) {
-        logger.error(`Erro ao verificar/criar tabela de usuários: ${tableError.message}`, { error: tableError });
+        logger.error(`Erro ao verificar/criar tabela de usuários: ${tableError.message}`, {
+          error: tableError,
+        });
         throw tableError;
       }
-      
+
       // Hash da senha
       const saltRounds = 10;
       logger.debug('Gerando hash da senha');
       const hashedPassword = await bcrypt.hash(userData.password, saltRounds);
       logger.debug('Hash da senha gerado com sucesso');
-      
+
       logger.debug('Inserindo usuário no banco de dados');
       const [result] = await pool.query(
         `INSERT INTO users (username, email, password, role) 
          VALUES (?, ?, ?, ?)`,
         [userData.username, userData.email, hashedPassword, userData.role || 'player']
       );
-      
+
       if (!result || !result.insertId) {
         throw new Error('Falha ao inserir usuário no banco de dados: Nenhum ID retornado');
       }
-      
+
       logger.info(`Usuário criado com sucesso, ID: ${result.insertId}`);
       const newUser = await User.findById(result.insertId);
-      
+
       if (!newUser) {
         throw new Error(`Usuário criado mas não encontrado após a criação. ID: ${result.insertId}`);
       }
-      
+
       return newUser;
     } catch (error) {
       // Verificar erros específicos de MySQL
@@ -162,8 +155,10 @@ class User {
           throw customError;
         }
       } else if (error.code === 'ER_NO_SUCH_TABLE') {
-        logger.error('Tabela de usuários não existe. Verificando configuração do banco de dados.', { error });
-        
+        logger.error('Tabela de usuários não existe. Verificando configuração do banco de dados.', {
+          error,
+        });
+
         // Tentar criar a tabela
         try {
           logger.info('Tentando criar tabela de usuários automaticamente');
@@ -180,15 +175,17 @@ class User {
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
           `);
           logger.info('Tabela de usuários criada com sucesso, tentando criar usuário novamente');
-          
+
           // Tentar criar o usuário novamente
           return await User.create(userData);
         } catch (tableError) {
-          logger.error(`Erro ao criar tabela de usuários: ${tableError.message}`, { error: tableError });
+          logger.error(`Erro ao criar tabela de usuários: ${tableError.message}`, {
+            error: tableError,
+          });
           throw new Error(`Falha ao criar tabela de usuários: ${tableError.message}`);
         }
       }
-      
+
       logger.error(`Erro ao criar usuário: ${error.message}`, { error });
       throw error;
     }
@@ -198,31 +195,28 @@ class User {
   async update(updates) {
     try {
       logger.debug(`Atualizando usuário: ${this.username} (ID: ${this.id})`);
-      
+
       // Se a senha for atualizada, hash ela primeiro
       if (updates.password) {
         const saltRounds = 10;
         logger.debug('Gerando hash para nova senha');
         updates.password = await bcrypt.hash(updates.password, saltRounds);
       }
-      
+
       // Construir a query dinamicamente com base nos campos a atualizar
-      const keys = Object.keys(updates).filter(key => key !== 'id');
+      const keys = Object.keys(updates).filter((key) => key !== 'id');
       if (keys.length === 0) {
         logger.debug('Nenhum campo para atualizar');
         return this;
       }
-      
-      const setClause = keys.map(key => `${key} = ?`).join(', ');
-      const values = keys.map(key => updates[key]);
+
+      const setClause = keys.map((key) => `${key} = ?`).join(', ');
+      const values = keys.map((key) => updates[key]);
       values.push(this.id);
-      
+
       logger.debug(`Executando atualização com campos: ${keys.join(', ')}`);
-      await pool.query(
-        `UPDATE users SET ${setClause}, updated_at = NOW() WHERE id = ?`,
-        values
-      );
-      
+      await pool.query(`UPDATE users SET ${setClause}, updated_at = NOW() WHERE id = ?`, values);
+
       // Obter o usuário atualizado
       logger.debug('Obtendo usuário atualizado');
       const updatedUser = await User.findById(this.id);
@@ -237,11 +231,10 @@ class User {
   async deactivate() {
     try {
       logger.info(`Desativando usuário: ${this.username} (ID: ${this.id})`);
-      await pool.query(
-        'UPDATE users SET active = false, updated_at = NOW() WHERE id = ?',
-        [this.id]
-      );
-      
+      await pool.query('UPDATE users SET active = false, updated_at = NOW() WHERE id = ?', [
+        this.id,
+      ]);
+
       this.active = false;
       logger.info(`Usuário desativado com sucesso: ${this.username}`);
       return this;
@@ -259,9 +252,9 @@ class User {
         'SELECT * FROM users WHERE active = true ORDER BY created_at DESC LIMIT ? OFFSET ?',
         [limit, offset]
       );
-      
+
       logger.debug(`${rows.length} usuários encontrados`);
-      return rows.map(row => new User(row));
+      return rows.map((row) => new User(row));
     } catch (error) {
       logger.error(`Erro ao listar usuários: ${error.message}`, { error });
       throw error;
@@ -272,7 +265,7 @@ class User {
   static async updateLastLogin(userId) {
     try {
       logger.debug(`Atualizando último login para usuário ID: ${userId}`);
-      
+
       // Verificar se a coluna last_login_at existe
       try {
         const [columns] = await pool.query('SHOW COLUMNS FROM users LIKE "last_login_at"');
@@ -284,12 +277,9 @@ class User {
       } catch (error) {
         logger.error(`Erro ao verificar coluna last_login_at: ${error.message}`, { error });
       }
-      
-      await pool.query(
-        'UPDATE users SET last_login_at = NOW() WHERE id = ?',
-        [userId]
-      );
-      
+
+      await pool.query('UPDATE users SET last_login_at = NOW() WHERE id = ?', [userId]);
+
       logger.debug(`Último login atualizado para usuário ID: ${userId}`);
       return true;
     } catch (error) {
@@ -306,7 +296,7 @@ class User {
         logger.warn('Tentativa de verificar senha sem usuário ou sem senha armazenada');
         return false;
       }
-      
+
       const result = await bcrypt.compare(password, user.password);
       logger.debug(`Resultado da verificação de senha: ${result ? 'válida' : 'inválida'}`);
       return result;
@@ -317,4 +307,4 @@ class User {
   }
 }
 
-module.exports = User; 
+module.exports = User;

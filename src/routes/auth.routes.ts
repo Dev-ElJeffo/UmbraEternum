@@ -9,7 +9,14 @@ import jwtConfig from '../config/jwt';
 import logger from '../config/logger';
 import { createError } from '../middlewares/error.middleware';
 import { Request, Response, NextFunction } from 'express';
-import { getIO, getAuthenticatedSockets, setAuthenticatedSockets, getOnlinePlayers, setOnlinePlayers, broadcastPlayerCount } from '../config/io';
+import {
+  getIO,
+  getAuthenticatedSockets,
+  setAuthenticatedSockets,
+  getOnlinePlayers,
+  setOnlinePlayers,
+  broadcastPlayerCount,
+} from '../config/io';
 
 const router = Router();
 
@@ -19,9 +26,9 @@ const generateTokens = async (user: { id: number; username: string; role: string
   const payload = {
     userId: user.id,
     username: user.username,
-    role: user.role
+    role: user.role,
   };
-  
+
   // Obter o segredo JWT da configuração
   let secret = jwtConfig.secret;
   if (!secret) {
@@ -29,25 +36,18 @@ const generateTokens = async (user: { id: number; username: string; role: string
     // Fallback para desenvolvimento - NÃO use em produção!
     secret = 'umbraeternum_dev_secret';
   }
-  
+
   try {
     // Gerar o token com payload, secret e opções
-    const accessToken = jwt.sign(
-      payload, 
-      secret as string, 
-      { expiresIn: jwtConfig.expiresIn }
-    );
+    const accessToken = jwt.sign(payload, secret as string, { expiresIn: jwtConfig.expiresIn });
 
     // Token de atualização (refresh)
-    const refreshToken = await RefreshTokenModel.create(
-      user.id,
-      jwtConfig.refreshExpiresIn
-    );
+    const refreshToken = await RefreshTokenModel.create(user.id, jwtConfig.refreshExpiresIn);
 
     return {
       accessToken,
       refreshToken: refreshToken.token,
-      expiresIn: jwtConfig.expiresIn
+      expiresIn: jwtConfig.expiresIn,
     };
   } catch (error) {
     logger.error('Erro ao gerar tokens JWT:', error);
@@ -65,76 +65,65 @@ const registerValidations = [
     .matches(/^[a-zA-Z0-9_]+$/)
     .withMessage('Nome de usuário pode conter apenas letras, números e sublinhado'),
 
-  body('email')
-    .isEmail()
-    .withMessage('Email inválido')
-    .normalizeEmail(),
+  body('email').isEmail().withMessage('Email inválido').normalizeEmail(),
 
   body('password')
     .isString()
     .isLength({ min: 8 })
     .withMessage('Senha deve ter no mínimo 8 caracteres')
     .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/)
-    .withMessage('Senha deve conter pelo menos uma letra maiúscula, uma minúscula e um número')
+    .withMessage('Senha deve conter pelo menos uma letra maiúscula, uma minúscula e um número'),
 ];
 
 // Validações para login
-const loginValidations = [
-  body('username').isString().trim(),
-  body('password').isString()
-];
+const loginValidations = [body('username').isString().trim(), body('password').isString()];
 
 // Rota de registro
-router.post(
-  '/register',
-  sanitizeBody,
-  validate(registerValidations),
-  async (req, res, next) => {
-    try {
-      const { username, email, password } = req.body;
+router.post('/register', sanitizeBody, validate(registerValidations), async (req, res, next) => {
+  try {
+    const { username, email, password } = req.body;
 
-      // Verificar se username já existe
-      const existingUsername = await UserModel.findByUsername(username);
-      if (existingUsername) {
-        throw createError('Nome de usuário já está em uso', 409, 'USERNAME_TAKEN');
-      }
-
-      // Verificar se email já existe
-      const existingEmail = await UserModel.findByEmail(email);
-      if (existingEmail) {
-        throw createError('Email já está em uso', 409, 'EMAIL_TAKEN');
-      }
-
-      // Criar usuário
-      const newUser = await UserModel.create({
-        username,
-        email,
-        password,
-        role: 'user',
-        status: 'active'
-      });
-
-      // Gerar tokens
-      const tokens = await generateTokens({
-        id: newUser.id,
-        username: newUser.username,
-        role: newUser.role
-      });
-
-      // Atualizar último login
-      await UserModel.updateLastLogin(newUser.id);
-
-      logger.info(`Novo usuário registrado: ${username}`);
-      res.status(201).json({
-        message: 'Usuário registrado com sucesso',
-        user: newUser,
-        ...tokens
-      });
-    } catch (error) {
-      next(error);
+    // Verificar se username já existe
+    const existingUsername = await UserModel.findByUsername(username);
+    if (existingUsername) {
+      throw createError('Nome de usuário já está em uso', 409, 'USERNAME_TAKEN');
     }
+
+    // Verificar se email já existe
+    const existingEmail = await UserModel.findByEmail(email);
+    if (existingEmail) {
+      throw createError('Email já está em uso', 409, 'EMAIL_TAKEN');
+    }
+
+    // Criar usuário
+    const newUser = await UserModel.create({
+      username,
+      email,
+      password,
+      role: 'user',
+      status: 'active',
+    });
+
+    // Gerar tokens
+    const tokens = await generateTokens({
+      id: newUser.id,
+      username: newUser.username,
+      role: newUser.role,
+    });
+
+    // Atualizar último login
+    await UserModel.updateLastLogin(newUser.id);
+
+    logger.info(`Novo usuário registrado: ${username}`);
+    res.status(201).json({
+      message: 'Usuário registrado com sucesso',
+      user: newUser,
+      ...tokens,
+    });
+  } catch (error) {
+    next(error);
   }
-);
+});
 
 // Rota de login
 router.post(
@@ -167,7 +156,7 @@ router.post(
       const tokens = await generateTokens({
         id: user.id!,
         username: user.username,
-        role: user.role || 'user'
+        role: user.role || 'user',
       });
 
       // Atualizar último login
@@ -180,9 +169,9 @@ router.post(
           id: user.id,
           username: user.username,
           email: user.email,
-          role: user.role
+          role: user.role,
         },
-        ...tokens
+        ...tokens,
       });
     } catch (error) {
       next(error);
@@ -229,13 +218,13 @@ router.post('/refresh-token', async (req, res, next) => {
     const tokens = await generateTokens({
       id: user.id,
       username: user.username,
-      role: user.role
+      role: user.role,
     });
 
     logger.info(`Token renovado para o usuário: ${user.username}`);
     res.json({
       message: 'Token renovado com sucesso',
-      ...tokens
+      ...tokens,
     });
   } catch (error) {
     next(error);
@@ -247,11 +236,11 @@ router.post('/logout', async (req: Request, res: Response, next: NextFunction) =
   try {
     const userId = (req as any).userId;
     const username = (req as any).username;
-    
+
     const io = getIO();
     const authenticatedSockets = getAuthenticatedSockets();
     let onlinePlayers = getOnlinePlayers();
-    
+
     // Encontrar e desconectar todos os sockets do usuário
     for (const [socketId, user] of authenticatedSockets.entries()) {
       if (user.id === userId) {
@@ -259,37 +248,37 @@ router.post('/logout', async (req: Request, res: Response, next: NextFunction) =
         if (socket) {
           logger.info(`[SOCKET] Desconectando usuário ${username} no socket ${socketId}`);
           socket.disconnect(true);
-          
+
           // Remover do mapa de autenticados
           authenticatedSockets.delete(socketId);
           setAuthenticatedSockets(authenticatedSockets);
-          
+
           // Decrementar contador de jogadores online
           onlinePlayers = Math.max(0, onlinePlayers - 1);
           setOnlinePlayers(onlinePlayers);
           broadcastPlayerCount();
-          
+
           // Log de logout
           logger.info(`Usuário ${username} fez logout`);
-          
+
           // Notificar outros usuários sobre o logout
           io.emit('logout_notification', {
             username: username,
-            timestamp: new Date().toISOString()
+            timestamp: new Date().toISOString(),
           });
         }
       }
     }
-    
+
     // Remover o token de atualização se fornecido
     const { refreshToken } = req.body;
     if (refreshToken) {
       await RefreshTokenModel.delete(refreshToken);
     }
-    
+
     return res.status(200).json({
       success: true,
-      message: 'Logout realizado com sucesso'
+      message: 'Logout realizado com sucesso',
     });
   } catch (error) {
     logger.error('Erro ao fazer logout:', error);
@@ -297,4 +286,4 @@ router.post('/logout', async (req: Request, res: Response, next: NextFunction) =
   }
 });
 
-export default router; 
+export default router;
