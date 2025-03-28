@@ -5,3 +5,86 @@
 2025-03-26 15:33:50 info: Variáveis de ambiente carregadas
 2025-03-27 15:21:20 warn: Validação falhou
 2025-03-27 15:21:43 warn: Validação falhou
+2025-03-27 23:18:36 [info]: Configuração JWT carregada:
+2025-03-27 23:18:36 [info]: - Secret: umb**********
+2025-03-27 23:18:36 [info]: - Expires In: 24h
+2025-03-27 23:18:36 [info]: - Refresh Expires In: 7d
+2025-03-27 23:18:37 [error]: Erro ao inicializar o banco de dados:: Failed to open the referenced table 'users'
+2025-03-27 23:40:17 [info]: Configuração JWT carregada:
+2025-03-27 23:40:17 [info]: - Secret: umb**********
+2025-03-27 23:40:17 [info]: - Expires In: 24h
+2025-03-27 23:40:17 [info]: - Refresh Expires In: 7d
+2025-03-27 23:40:17 [error]: Erro ao inicializar o banco de dados:: Failed to open the referenced table 'users'
+2025-03-27 23:53:13 [info]: Configuração JWT carregada:
+2025-03-27 23:53:13 [info]: - Secret: umb**********
+2025-03-27 23:53:13 [info]: - Expires In: 24h
+2025-03-27 23:53:13 [info]: - Refresh Expires In: 7d
+2025-03-27 23:53:13 [info]: Configuração do banco de dados:
+2025-03-27 23:53:13 [info]: - Host: localhost
+2025-03-27 23:53:13 [info]: - Porta: 3306
+2025-03-27 23:53:13 [info]: - Usuário: root
+2025-03-27 23:53:13 [info]: - Banco de dados: umbraeternum_new
+2025-03-27 23:53:13 [info]: - Ambiente: development
+2025-03-27 23:53:13 [info]: Conexão com o banco de dados estabelecida com sucesso.
+2025-03-27 23:53:13 [error]: Erro ao inicializar o banco de dados:: Failed to open the referenced table 'characters'
+2025-03-28 06:55:48 [info]: Configuração JWT carregada:
+2025-03-28 06:55:48 [info]: - Secret: umb**********
+2025-03-28 06:55:48 [info]: - Expires In: 24h
+2025-03-28 06:55:48 [info]: - Refresh Expires In: 7d
+2025-03-28 06:55:48 [info]: Configuração do banco de dados:
+2025-03-28 06:55:48 [info]: - Host: localhost
+2025-03-28 06:55:48 [info]: - Porta: 3306
+2025-03-28 06:55:48 [info]: - Usuário: root
+2025-03-28 06:55:48 [info]: - Banco de dados: umbraeternum_new
+2025-03-28 06:55:48 [info]: - Ambiente: development
+2025-03-28 06:55:48 [info]: Conexão com o banco de dados estabelecida com sucesso.
+2025-03-28 06:55:48 [info]: Banco de dados umbraeternum_new verificado/criado
+2025-03-28 06:55:48 [info]: Tabela users verificada/criada
+2025-03-28 06:55:48 [info]: Tabela characters verificada/criada
+2025-03-28 06:55:48 [error]: Erro ao inicializar o banco de dados:: Failed to open the referenced table 'characters'
+2025-03-28 06:57:21 [info]: Configuração JWT carregada:
+2025-03-28 06:57:21 [info]: - Secret: umb**********
+2025-03-28 06:57:21 [info]: - Expires In: 24h
+2025-03-28 06:57:21 [info]: - Refresh Expires In: 7d
+2025-03-28 06:57:22 [info]: Configuração do banco de dados:
+2025-03-28 06:57:22 [info]: - Host: localhost
+2025-03-28 06:57:22 [info]: - Porta: 3306
+2025-03-28 06:57:22 [info]: - Usuário: root
+2025-03-28 06:57:22 [info]: - Banco de dados: umbraeternum_new
+2025-03-28 06:57:22 [info]: - Ambiente: development
+2025-03-28 06:57:22 [info]: Conexão com o banco de dados estabelecida com sucesso.
+2025-03-28 06:57:22 [info]: Banco de dados umbraeternum_new verificado/criado
+2025-03-28 06:57:22 [info]: Tabela users verificada/criada
+2025-03-28 06:57:22 [info]: Tabela characters verificada/criada
+2025-03-28 06:57:22 [info]: Foreign key adicionada à tabela characters
+2025-03-28 06:57:22 [info]: Tabela character_items verificada/criada
+2025-03-28 06:57:22 [warn]: Foreign key já existe ou não pôde ser adicionada: Error: Failed to open the referenced table 'characters'
+2025-03-28 06:57:22 [info]: Criando usuário admin padrão...
+2025-03-28 06:57:22 [info]: Usuário admin criado com sucesso
+2025-03-28 06:58:03 [info]: Configuração JWT carregada:
+2025-03-28 06:58:03 [info]: - Secret: umb**********
+2025-03-28 06:58:03 [info]: - Expires In: 24h
+2025-03-28 06:58:03 [info]: - Refresh Expires In: 7d
+2025-03-28 06:58:03 [info]: Configuração do banco de dados:
+2025-03-28 06:58:03 [info]: - Host: localhost
+2025-03-28 06:58:03 [info]: - Porta: 3306
+2025-03-28 06:58:03 [info]: - Usuário: root
+2025-03-28 06:58:03 [info]: - Banco de dados: umbraeternum_new
+2025-03-28 06:58:03 [info]: - Ambiente: development
+2025-03-28 06:58:03 [info]: Conexão com o banco de dados estabelecida com sucesso.
+2025-03-28 06:58:03 [info]: Banco de dados umbraeternum_new verificado/criado
+2025-03-28 06:58:03 [info]: Tabela users verificada/criada
+2025-03-28 06:58:03 [info]: Tabela characters verificada/criada
+2025-03-28 06:58:03 [info]: Foreign key adicionada à tabela characters
+2025-03-28 06:58:03 [info]: Tabela character_items verificada/criada
+2025-03-28 06:58:03 [warn]: Foreign key já existe ou não pôde ser adicionada: Error: Failed to open the referenced table 'characters'
+2025-03-28 06:58:03 [info]: Usuário admin já existe
+2025-03-28 06:58:03 [info]: Banco de dados inicializado com sucesso
+2025-03-28 06:58:03 [info]: Servidor rodando na porta 34567
+2025-03-28 06:58:03 [info]: API: http://localhost:34567/api
+2025-03-28 06:58:03 [info]: Socket.IO: ws://localhost:34567
+2025-03-28 06:58:03 [info]: [ATIVIDADE] Servidor iniciado na porta 34567
+2025-03-28 06:58:05 [info]: Nova conexão de socket: p2PJkA69JDyZqfucAAAB
+2025-03-28 07:33:03 [info]: Desconectando socket p2PJkA69JDyZqfucAAAB por inatividade
+2025-03-28 07:33:03 [info]: Desconexão de socket: p2PJkA69JDyZqfucAAAB
+2025-03-28 09:21:02 [info]: Recebido sinal SIGINT, desligando servidor...

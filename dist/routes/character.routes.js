@@ -24,7 +24,7 @@ const characterValidations = [
         .isString()
         .trim()
         .isIn(['guerreiro', 'mago', 'arqueiro', 'sacerdote', 'assassino', 'paladino'])
-        .withMessage('Classe do personagem inválida')
+        .withMessage('Classe do personagem inválida'),
 ];
 // Rota para listar personagens do usuário logado
 router.get('/', async (req, res, next) => {
@@ -32,7 +32,7 @@ router.get('/', async (req, res, next) => {
         const userId = req.user.id;
         const characters = await Character_1.default.findByUserId(userId);
         res.json({
-            data: characters
+            data: characters,
         });
     }
     catch (error) {
@@ -54,7 +54,7 @@ router.get('/:id', (0, validation_middleware_1.validate)([(0, express_validator_
             throw (0, error_middleware_1.createError)('Acesso negado', 403, 'ACCESS_DENIED');
         }
         res.json({
-            data: character
+            data: character,
         });
     }
     catch (error) {
@@ -75,12 +75,12 @@ router.post('/', validation_middleware_1.sanitizeBody, (0, validation_middleware
         const newCharacter = await Character_1.default.create({
             user_id: userId,
             name,
-            class: characterClass
+            class: characterClass,
         });
         logger_1.default.info(`Novo personagem criado: ${name} para o usuário ID ${userId}`);
         res.status(201).json({
             message: 'Personagem criado com sucesso',
-            data: newCharacter
+            data: newCharacter,
         });
     }
     catch (error) {
@@ -88,10 +88,7 @@ router.post('/', validation_middleware_1.sanitizeBody, (0, validation_middleware
     }
 });
 // Rota para atualizar um personagem
-router.put('/:id', validation_middleware_1.sanitizeBody, (0, validation_middleware_1.validate)([
-    (0, express_validator_1.param)('id').isInt().withMessage('ID inválido'),
-    ...characterValidations
-]), async (req, res, next) => {
+router.put('/:id', validation_middleware_1.sanitizeBody, (0, validation_middleware_1.validate)([(0, express_validator_1.param)('id').isInt().withMessage('ID inválido'), ...characterValidations]), async (req, res, next) => {
     try {
         const characterId = parseInt(req.params.id, 10);
         const userId = req.user.id;
@@ -108,12 +105,12 @@ router.put('/:id', validation_middleware_1.sanitizeBody, (0, validation_middlewa
         // Atualizar personagem
         const updatedCharacter = await Character_1.default.update(characterId, {
             name,
-            class: characterClass
+            class: characterClass,
         });
         logger_1.default.info(`Personagem atualizado: ${name} (ID: ${characterId})`);
         res.json({
             message: 'Personagem atualizado com sucesso',
-            data: updatedCharacter
+            data: updatedCharacter,
         });
     }
     catch (error) {

@@ -22,7 +22,7 @@ class UserModel {
                 hashedPassword,
                 userData.role || 'user',
                 userData.status || 'active',
-                userData.avatar_url || null
+                userData.avatar_url || null,
             ]);
             // @ts-ignore - Acessando o insertId do MySQL
             const userId = result.insertId;

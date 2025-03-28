@@ -19,10 +19,10 @@ exports.loginRateLimiter = (0, express_rate_limit_1.default)({
         res.status(429).json({
             error: {
                 message: 'Muitas tentativas de login. Tente novamente após 15 minutos.',
-                code: 'RATE_LIMIT_EXCEEDED'
-            }
+                code: 'RATE_LIMIT_EXCEEDED',
+            },
         });
-    }
+    },
 });
 // Limites para API geral
 exports.apiRateLimiter = (0, express_rate_limit_1.default)({
@@ -35,10 +35,10 @@ exports.apiRateLimiter = (0, express_rate_limit_1.default)({
         res.status(429).json({
             error: {
                 message: 'Muitas requisições. Tente novamente em alguns instantes.',
-                code: 'RATE_LIMIT_EXCEEDED'
-            }
+                code: 'RATE_LIMIT_EXCEEDED',
+            },
         });
-    }
+    },
 });
 // Configura o CORS
 const corsConfig = (allowedOrigins) => {
@@ -47,7 +47,7 @@ const corsConfig = (allowedOrigins) => {
         methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
         allowedHeaders: ['Content-Type', 'Authorization'],
         credentials: true,
-        maxAge: 86400 // 24 horas
+        maxAge: 86400, // 24 horas
     });
 };
 exports.corsConfig = corsConfig;
@@ -57,7 +57,7 @@ const configureHelmet = () => {
         contentSecurityPolicy: process.env.NODE_ENV === 'production',
         xssFilter: true,
         noSniff: true,
-        hidePoweredBy: true
+        hidePoweredBy: true,
     });
 };
 exports.configureHelmet = configureHelmet;

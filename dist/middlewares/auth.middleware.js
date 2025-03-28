@@ -41,7 +41,7 @@ const authenticateJWT = async (req, res, next) => {
             req.user = {
                 id: decoded.userId,
                 username: decoded.username,
-                role: decoded.role
+                role: decoded.role,
             };
             next();
         }

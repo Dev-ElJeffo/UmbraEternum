@@ -31,7 +31,9 @@ class RefreshTokenModel {
             // @ts-ignore - Acessando o insertId do MySQL
             const tokenId = result.insertId;
             // Buscar o token recém-criado
-            const [tokens] = await database_1.pool.query('SELECT * FROM refresh_tokens WHERE id = ?', [tokenId]);
+            const [tokens] = await database_1.pool.query('SELECT * FROM refresh_tokens WHERE id = ?', [
+                tokenId,
+            ]);
             return tokens[0];
         }
         catch (error) {
@@ -44,7 +46,9 @@ class RefreshTokenModel {
      */
     async findByToken(token) {
         try {
-            const [tokens] = await database_1.pool.query('SELECT * FROM refresh_tokens WHERE token = ?', [token]);
+            const [tokens] = await database_1.pool.query('SELECT * FROM refresh_tokens WHERE token = ?', [
+                token,
+            ]);
             return tokens.length > 0 ? tokens[0] : null;
         }
         catch (error) {
@@ -89,7 +93,9 @@ class RefreshTokenModel {
      */
     async deleteAllForUser(userId) {
         try {
-            const [result] = await database_1.pool.query('DELETE FROM refresh_tokens WHERE user_id = ?', [userId]);
+            const [result] = await database_1.pool.query('DELETE FROM refresh_tokens WHERE user_id = ?', [
+                userId,
+            ]);
             // @ts-ignore - Acessando o affectedRows do MySQL
             return result.affectedRows > 0;
         }

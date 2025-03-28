@@ -1,0 +1,5 @@
+2025-03-27 23:18:37 [error]: Erro ao inicializar o banco de dados:: Failed to open the referenced table 'users'
+2025-03-27 23:40:17 [error]: Erro ao inicializar o banco de dados:: Failed to open the referenced table 'users'
+2025-03-27 23:53:13 [error]: Erro ao inicializar o banco de dados:: Failed to open the referenced table 'characters'
+2025-03-28 06:55:48 [error]: Erro ao inicializar o banco de dados:: Failed to open the referenced table 'characters'
+2025-03-28 06:57:22 [error]: Exceção não tratada:: listen EADDRINUSE: address already in use :::34567

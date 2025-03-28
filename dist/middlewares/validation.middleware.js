@@ -13,7 +13,7 @@ const logger_1 = __importDefault(require("../config/logger"));
 const validate = (validations) => {
     return async (req, res, next) => {
         // Executar todas as validações
-        await Promise.all(validations.map(validation => validation.run(req)));
+        await Promise.all(validations.map((validation) => validation.run(req)));
         // Verificar se houve erros
         const errors = (0, express_validator_1.validationResult)(req);
         if (errors.isEmpty()) {
@@ -24,7 +24,7 @@ const validate = (validations) => {
         const formattedErrors = errors.array().map((error) => {
             return {
                 field: error.path || error.param || error.location,
-                message: error.msg
+                message: error.msg,
             };
         });
         logger_1.default.debug(`Erro de validação: ${JSON.stringify(formattedErrors)}`);
@@ -38,7 +38,7 @@ exports.validate = validate;
 const sanitizeBody = (req, res, next) => {
     if (req.body) {
         // Remover espaços em branco antes e depois de strings
-        Object.keys(req.body).forEach(key => {
+        Object.keys(req.body).forEach((key) => {
             if (typeof req.body[key] === 'string') {
                 req.body[key] = req.body[key].trim();
             }

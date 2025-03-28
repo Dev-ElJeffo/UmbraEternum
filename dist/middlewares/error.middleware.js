@@ -26,8 +26,8 @@ const errorHandler = (err, req, res, next) => {
             message,
             code: err.code || 'INTERNAL_ERROR',
             // Incluir stack trace apenas em desenvolvimento
-            ...(process.env.NODE_ENV === 'development' && { stack: err.stack })
-        }
+            ...(process.env.NODE_ENV === 'development' && { stack: err.stack }),
+        },
     });
 };
 exports.errorHandler = errorHandler;
@@ -39,8 +39,8 @@ const notFoundHandler = (req, res) => {
     res.status(404).json({
         error: {
             message: 'Recurso não encontrado',
-            code: 'NOT_FOUND'
-        }
+            code: 'NOT_FOUND',
+        },
     });
 };
 exports.notFoundHandler = notFoundHandler;

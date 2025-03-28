@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.testConnection = exports.pool = void 0;
 const promise_1 = __importDefault(require("mysql2/promise"));
 const dotenv_1 = __importDefault(require("dotenv"));
+const logger_1 = __importDefault(require("./logger"));
+// Carregar variáveis de ambiente
 dotenv_1.default.config();
 const dbConfig = {
     host: process.env.DB_HOST || 'localhost',
@@ -18,8 +20,8 @@ const dbConfig = {
     queueLimit: 0,
     // Usar SSL/TLS para conexão segura quando em produção
     ...(process.env.NODE_ENV === 'production' && {
-        ssl: { rejectUnauthorized: true }
-    })
+        ssl: { rejectUnauthorized: true },
+    }),
 };
 // Criar pool de conexões
 const pool = promise_1.default.createPool(dbConfig);
@@ -28,12 +30,18 @@ exports.pool = pool;
 const testConnection = async () => {
     try {
         const connection = await pool.getConnection();
-        console.log('Conexão com o banco de dados estabelecida com sucesso.');
+        logger_1.default.info('Configuração do banco de dados:');
+        logger_1.default.info(`- Host: ${dbConfig.host}`);
+        logger_1.default.info(`- Porta: ${dbConfig.port}`);
+        logger_1.default.info(`- Usuário: ${dbConfig.user}`);
+        logger_1.default.info(`- Banco de dados: ${dbConfig.database}`);
+        logger_1.default.info(`- Ambiente: ${process.env.NODE_ENV || 'development'}`);
+        logger_1.default.info('Conexão com o banco de dados estabelecida com sucesso.');
         connection.release();
     }
     catch (error) {
-        console.error('Erro ao conectar com o banco de dados:', error);
-        process.exit(1);
+        logger_1.default.error('Erro ao conectar com o banco de dados:', error);
+        throw error;
     }
 };
 exports.testConnection = testConnection;

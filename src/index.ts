@@ -25,6 +25,7 @@ import { authenticateJWT as authenticate, requireAdmin as isAdmin } from './midd
 import { body } from 'express-validator';
 import authRoutes from './routes/auth.routes';
 import characterRoutes from './routes/character.routes';
+import adminRoutes from './routes/admin.routes';
 
 // Estendendo a interface Request para incluir propriedades do usuário
 declare global {
@@ -63,6 +64,9 @@ const io = new Server(server, {
 let onlinePlayers = 0;
 const authenticatedSockets = new Map(); // Mapear sockets para dados de usuário
 const lastActivity = new Map(); // Registrar última atividade por socket
+
+// Disponibilizar a contagem de jogadores online para as rotas
+app.set('onlinePlayers', onlinePlayers);
 
 // Middleware de segurança e configuração
 app.use(corsConfig(process.env.CORS_ORIGIN || '*'));
@@ -125,6 +129,7 @@ function verifyToken(token: string): any {
 // Função para transmitir contagem de jogadores
 function broadcastPlayerCount(): void {
   io.emit('playerCount', { count: onlinePlayers });
+  logger.info(`Total de jogadores online: ${onlinePlayers}`);
 }
 
 // Função para desconectar todos os usuários
@@ -133,6 +138,7 @@ function disconnectAllUsers(): void {
   authenticatedSockets.clear();
   lastActivity.clear();
   onlinePlayers = 0;
+  app.set('onlinePlayers', 0);
   logActivity('Todos os usuários foram desconectados pelo sistema', 'system');
 }
 
@@ -172,6 +178,7 @@ io.on('connection', (socket) => {
 
       if (isNewPlayer) {
         onlinePlayers++;
+        app.set('onlinePlayers', onlinePlayers);
         broadcastPlayerCount();
         logActivity(`${decoded.username} entrou no jogo`, 'login');
       }
@@ -223,6 +230,7 @@ io.on('connection', (socket) => {
 
       if (!otherConnections) {
         onlinePlayers--;
+        app.set('onlinePlayers', onlinePlayers);
         broadcastPlayerCount();
         logActivity(`${userData.username} saiu do jogo`, 'logout');
       }
@@ -254,6 +262,7 @@ setInterval(() => {
 // Rotas da API
 app.use('/api/auth', authRoutes);
 app.use('/api/characters', characterRoutes);
+app.use('/api/admin', adminRoutes);
 
 // Rota de status/healthcheck
 app.get('/api/status', (req, res) => {
@@ -283,6 +292,12 @@ app.get('/api/endpoints', (req, res) => {
     { path: '/api/characters/:id', method: 'GET', description: 'Obter detalhes do personagem', auth: true },
     { path: '/api/characters/:id', method: 'PUT', description: 'Atualizar personagem', auth: true },
     { path: '/api/characters/:id', method: 'DELETE', description: 'Excluir personagem', auth: true },
+    { path: '/api/admin/users', method: 'GET', description: 'Listar todos os usuários', auth: true, admin: true },
+    { path: '/api/admin/characters', method: 'GET', description: 'Listar todos os personagens', auth: true, admin: true },
+    { path: '/api/admin/users/:id/role', method: 'PUT', description: 'Alterar papel do usuário', auth: true, admin: true },
+    { path: '/api/admin/users/:id/ban', method: 'PUT', description: 'Banir usuário', auth: true, admin: true },
+    { path: '/api/admin/users/:id/unban', method: 'PUT', description: 'Desbanir usuário', auth: true, admin: true },
+    { path: '/api/admin/stats', method: 'GET', description: 'Estatísticas do sistema', auth: true, admin: true },
   ];
 
   res.json({
@@ -290,116 +305,6 @@ app.get('/api/endpoints', (req, res) => {
     count: endpoints.length,
     endpoints,
   });
-});
-
-// Rota administrativa para listar todos os usuários
-app.get('/api/admin/users', authenticate, isAdmin, async (req, res) => {
-  try {
-    const [rows] = await pool.query<mysql.RowDataPacket[]>(
-      'SELECT id, username, email, role, active, created_at, updated_at, last_login_at FROM users ORDER BY id'
-    );
-
-    res.json({
-      success: true,
-      count: rows.length,
-      users: rows,
-    });
-  } catch (error) {
-    logger.error('Erro ao listar usuários:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Erro ao buscar usuários',
-    });
-  }
-});
-
-// Rota administrativa para listar todos os personagens
-app.get('/api/admin/characters', authenticate, isAdmin, async (req, res) => {
-  try {
-    const [rows] = await pool.query<mysql.RowDataPacket[]>(
-      'SELECT * FROM characters WHERE deleted_at IS NULL ORDER BY id'
-    );
-
-    res.json({
-      success: true,
-      count: rows.length,
-      characters: rows,
-    });
-  } catch (error) {
-    logger.error('Erro ao listar personagens:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Erro ao buscar personagens',
-    });
-  }
-});
-
-// Rota administrativa para alterar o papel de um usuário
-app.put('/api/admin/users/:id/role', authenticate, isAdmin, [
-  body('role').isIn(['admin', 'player']).withMessage('Papel deve ser admin ou player'),
-  validate,
-], async (req: Request, res) => {
-  const userId = parseInt(req.params.id, 10);
-  const { role } = req.body;
-
-  try {
-    const [result] = await pool.query(
-      'UPDATE users SET role = ? WHERE id = ?',
-      [role, userId]
-    );
-
-    if ((result as mysql.ResultSetHeader).affectedRows === 0) {
-      return res.status(404).json({
-        success: false,
-        message: 'Usuário não encontrado',
-      });
-    }
-
-    logActivity(`Papel do usuário ID ${userId} alterado para ${role} por ${req.user?.username || 'admin'}`, 'admin');
-
-    res.json({
-      success: true,
-      message: `Papel do usuário alterado para ${role}`,
-    });
-  } catch (error) {
-    logger.error('Erro ao alterar papel do usuário:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Erro ao alterar papel do usuário',
-    });
-  }
-});
-
-// Rota administrativa para desativar um usuário
-app.delete('/api/admin/users/:id', authenticate, isAdmin, async (req: Request, res) => {
-  const userId = parseInt(req.params.id, 10);
-
-  try {
-    const [result] = await pool.query(
-      'UPDATE users SET active = FALSE WHERE id = ?',
-      [userId]
-    );
-
-    if ((result as mysql.ResultSetHeader).affectedRows === 0) {
-      return res.status(404).json({
-        success: false,
-        message: 'Usuário não encontrado',
-      });
-    }
-
-    logActivity(`Usuário ID ${userId} desativado por ${req.user?.username || 'admin'}`, 'admin');
-
-    res.json({
-      success: true,
-      message: 'Usuário desativado com sucesso',
-    });
-  } catch (error) {
-    logger.error('Erro ao desativar usuário:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Erro ao desativar usuário',
-    });
-  }
 });
 
 // Middleware para tratar rotas não encontradas

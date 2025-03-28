@@ -13,6 +13,7 @@ const RefreshToken_1 = __importDefault(require("../models/RefreshToken"));
 const jwt_1 = __importDefault(require("../config/jwt"));
 const logger_1 = __importDefault(require("../config/logger"));
 const error_middleware_1 = require("../middlewares/error.middleware");
+const io_1 = require("../config/io");
 const router = (0, express_1.Router)();
 // Gerar tokens JWT
 const generateTokens = async (user) => {
@@ -20,7 +21,7 @@ const generateTokens = async (user) => {
     const payload = {
         userId: user.id,
         username: user.username,
-        role: user.role
+        role: user.role,
     };
     // Obter o segredo JWT da configuração
     let secret = jwt_1.default.secret;
@@ -31,15 +32,13 @@ const generateTokens = async (user) => {
     }
     try {
         // Gerar o token com payload, secret e opções
-        const accessToken = jsonwebtoken_1.default.sign(payload, secret, {
-            expiresIn: jwt_1.default.expiresIn
-        });
+        const accessToken = jsonwebtoken_1.default.sign(payload, secret, { expiresIn: jwt_1.default.expiresIn });
         // Token de atualização (refresh)
         const refreshToken = await RefreshToken_1.default.create(user.id, jwt_1.default.refreshExpiresIn);
         return {
             accessToken,
             refreshToken: refreshToken.token,
-            expiresIn: jwt_1.default.expiresIn
+            expiresIn: jwt_1.default.expiresIn,
         };
     }
     catch (error) {
@@ -56,22 +55,16 @@ const registerValidations = [
         .withMessage('Nome de usuário deve ter entre 3 e 30 caracteres')
         .matches(/^[a-zA-Z0-9_]+$/)
         .withMessage('Nome de usuário pode conter apenas letras, números e sublinhado'),
-    (0, express_validator_1.body)('email')
-        .isEmail()
-        .withMessage('Email inválido')
-        .normalizeEmail(),
+    (0, express_validator_1.body)('email').isEmail().withMessage('Email inválido').normalizeEmail(),
     (0, express_validator_1.body)('password')
         .isString()
         .isLength({ min: 8 })
         .withMessage('Senha deve ter no mínimo 8 caracteres')
         .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/)
-        .withMessage('Senha deve conter pelo menos uma letra maiúscula, uma minúscula e um número')
+        .withMessage('Senha deve conter pelo menos uma letra maiúscula, uma minúscula e um número'),
 ];
 // Validações para login
-const loginValidations = [
-    (0, express_validator_1.body)('username').isString().trim(),
-    (0, express_validator_1.body)('password').isString()
-];
+const loginValidations = [(0, express_validator_1.body)('username').isString().trim(), (0, express_validator_1.body)('password').isString()];
 // Rota de registro
 router.post('/register', validation_middleware_1.sanitizeBody, (0, validation_middleware_1.validate)(registerValidations), async (req, res, next) => {
     try {
@@ -92,13 +85,13 @@ router.post('/register', validation_middleware_1.sanitizeBody, (0, validation_mi
             email,
             password,
             role: 'user',
-            status: 'active'
+            status: 'active',
         });
         // Gerar tokens
         const tokens = await generateTokens({
             id: newUser.id,
             username: newUser.username,
-            role: newUser.role
+            role: newUser.role,
         });
         // Atualizar último login
         await User_1.default.updateLastLogin(newUser.id);
@@ -106,7 +99,7 @@ router.post('/register', validation_middleware_1.sanitizeBody, (0, validation_mi
         res.status(201).json({
             message: 'Usuário registrado com sucesso',
             user: newUser,
-            ...tokens
+            ...tokens,
         });
     }
     catch (error) {
@@ -135,7 +128,7 @@ router.post('/login', security_middleware_1.loginRateLimiter, validation_middlew
         const tokens = await generateTokens({
             id: user.id,
             username: user.username,
-            role: user.role || 'user'
+            role: user.role || 'user',
         });
         // Atualizar último login
         await User_1.default.updateLastLogin(user.id);
@@ -146,9 +139,9 @@ router.post('/login', security_middleware_1.loginRateLimiter, validation_middlew
                 id: user.id,
                 username: user.username,
                 email: user.email,
-                role: user.role
+                role: user.role,
             },
-            ...tokens
+            ...tokens,
         });
     }
     catch (error) {
@@ -187,36 +180,62 @@ router.post('/refresh-token', async (req, res, next) => {
         const tokens = await generateTokens({
             id: user.id,
             username: user.username,
-            role: user.role
+            role: user.role,
         });
         logger_1.default.info(`Token renovado para o usuário: ${user.username}`);
         res.json({
             message: 'Token renovado com sucesso',
-            ...tokens
+            ...tokens,
         });
     }
     catch (error) {
         next(error);
     }
 });
-// Rota de logout separada para contornar problemas de tipagem
-router.post('/logout', (req, res, next) => {
+// Rota de logout
+router.post('/logout', async (req, res, next) => {
     try {
-        const { refreshToken } = req.body;
-        if (!refreshToken) {
-            return res.status(204).end(); // Sem conteúdo, não há token para invalidar
+        const userId = req.userId;
+        const username = req.username;
+        const io = (0, io_1.getIO)();
+        const authenticatedSockets = (0, io_1.getAuthenticatedSockets)();
+        let onlinePlayers = (0, io_1.getOnlinePlayers)();
+        // Encontrar e desconectar todos os sockets do usuário
+        for (const [socketId, user] of authenticatedSockets.entries()) {
+            if (user.id === userId) {
+                const socket = io.sockets.sockets.get(socketId);
+                if (socket) {
+                    logger_1.default.info(`[SOCKET] Desconectando usuário ${username} no socket ${socketId}`);
+                    socket.disconnect(true);
+                    // Remover do mapa de autenticados
+                    authenticatedSockets.delete(socketId);
+                    (0, io_1.setAuthenticatedSockets)(authenticatedSockets);
+                    // Decrementar contador de jogadores online
+                    onlinePlayers = Math.max(0, onlinePlayers - 1);
+                    (0, io_1.setOnlinePlayers)(onlinePlayers);
+                    (0, io_1.broadcastPlayerCount)();
+                    // Log de logout
+                    logger_1.default.info(`Usuário ${username} fez logout`);
+                    // Notificar outros usuários sobre o logout
+                    io.emit('logout_notification', {
+                        username: username,
+                        timestamp: new Date().toISOString(),
+                    });
+                }
+            }
         }
-        // Tenta remover o token de atualização
-        RefreshToken_1.default.delete(refreshToken)
-            .then(() => {
-            logger_1.default.info('Logout realizado com sucesso');
-            res.status(204).end();
-        })
-            .catch(error => {
-            next(error);
+        // Remover o token de atualização se fornecido
+        const { refreshToken } = req.body;
+        if (refreshToken) {
+            await RefreshToken_1.default.delete(refreshToken);
+        }
+        return res.status(200).json({
+            success: true,
+            message: 'Logout realizado com sucesso',
         });
     }
     catch (error) {
+        logger_1.default.error('Erro ao fazer logout:', error);
         next(error);
     }
 });

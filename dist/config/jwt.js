@@ -14,7 +14,7 @@ if (!secret) {
 const jwtConfig = {
     secret: secret || 'umbraeternum_secret_key_ultra_segura',
     expiresIn: process.env.JWT_EXPIRATION || '24h',
-    refreshExpiresIn: process.env.JWT_REFRESH_EXPIRATION || '7d'
+    refreshExpiresIn: process.env.JWT_REFRESH_EXPIRATION || '7d',
 };
 // Exibir informações sobre a configuração JWT (sem expor o segredo)
 logger_1.default.info('Configuração JWT carregada:');

@@ -24,7 +24,7 @@ class CharacterModel {
                 wisdom: 10,
                 constitution: 10,
                 charisma: 10,
-                status: 'active'
+                status: 'active',
             };
             // Mesclar valores padrão com os fornecidos
             const data = { ...defaultValues, ...characterData };
@@ -32,14 +32,28 @@ class CharacterModel {
           user_id, name, class, level, experience, health, mana, stamina,
           strength, dexterity, intelligence, wisdom, constitution, charisma, status
         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, [
-                data.user_id, data.name, data.class, data.level, data.experience,
-                data.health, data.mana, data.stamina, data.strength, data.dexterity,
-                data.intelligence, data.wisdom, data.constitution, data.charisma, data.status
+                data.user_id,
+                data.name,
+                data.class,
+                data.level,
+                data.experience,
+                data.health,
+                data.mana,
+                data.stamina,
+                data.strength,
+                data.dexterity,
+                data.intelligence,
+                data.wisdom,
+                data.constitution,
+                data.charisma,
+                data.status,
             ]);
             // @ts-ignore - Acessando o insertId do MySQL
             const characterId = result.insertId;
             // Buscar o personagem recém-criado
-            const [characters] = await database_1.pool.query('SELECT * FROM characters WHERE id = ?', [characterId]);
+            const [characters] = await database_1.pool.query('SELECT * FROM characters WHERE id = ?', [
+                characterId,
+            ]);
             return characters[0];
         }
         catch (error) {
@@ -65,7 +79,9 @@ class CharacterModel {
      */
     async findByUserId(userId) {
         try {
-            const [characters] = await database_1.pool.query('SELECT * FROM characters WHERE user_id = ?', [userId]);
+            const [characters] = await database_1.pool.query('SELECT * FROM characters WHERE user_id = ?', [
+                userId,
+            ]);
             return characters;
         }
         catch (error) {

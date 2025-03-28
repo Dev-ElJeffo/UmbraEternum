@@ -1,6 +1,8 @@
 import mysql from 'mysql2/promise';
 import dotenv from 'dotenv';
+import logger from './logger';
 
+// Carregar variáveis de ambiente
 dotenv.config();
 
 interface DBConfig {
@@ -37,11 +39,17 @@ const pool = mysql.createPool(dbConfig);
 const testConnection = async (): Promise<void> => {
   try {
     const connection = await pool.getConnection();
-    console.log('Conexão com o banco de dados estabelecida com sucesso.');
+    logger.info('Configuração do banco de dados:');
+    logger.info(`- Host: ${dbConfig.host}`);
+    logger.info(`- Porta: ${dbConfig.port}`);
+    logger.info(`- Usuário: ${dbConfig.user}`);
+    logger.info(`- Banco de dados: ${dbConfig.database}`);
+    logger.info(`- Ambiente: ${process.env.NODE_ENV || 'development'}`);
+    logger.info('Conexão com o banco de dados estabelecida com sucesso.');
     connection.release();
   } catch (error) {
-    console.error('Erro ao conectar com o banco de dados:', error);
-    process.exit(1);
+    logger.error('Erro ao conectar com o banco de dados:', error);
+    throw error;
   }
 };
 

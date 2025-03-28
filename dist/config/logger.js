@@ -22,19 +22,21 @@ const logger = winston_1.default.createLogger({
         // Log de erros em arquivo
         new winston_1.default.transports.File({
             filename: path_1.default.join(logDir, 'error.log'),
-            level: 'error'
+            level: 'error',
         }),
         // Log de todas as informações
         new winston_1.default.transports.File({
-            filename: path_1.default.join(logDir, 'combined.log')
+            filename: path_1.default.join(logDir, 'combined.log'),
         }),
         // Em desenvolvimento, mostra no console também
         ...(process.env.NODE_ENV !== 'production'
-            ? [new winston_1.default.transports.Console({
-                    format: combine(colorize(), logFormat)
-                })]
-            : [])
-    ]
+            ? [
+                new winston_1.default.transports.Console({
+                    format: combine(colorize(), logFormat),
+                }),
+            ]
+            : []),
+    ],
 });
 // Exporta um wrapper para facilitar o uso
 exports.default = {
@@ -57,5 +59,5 @@ exports.default = {
     },
     http: (message) => {
         logger.http(message);
-    }
+    },
 };
